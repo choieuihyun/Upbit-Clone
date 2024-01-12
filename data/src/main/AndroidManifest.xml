@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A problem occurred configuring project ':data' 에러 발생 해결을 위한 패키지 선언 -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+</manifest>
