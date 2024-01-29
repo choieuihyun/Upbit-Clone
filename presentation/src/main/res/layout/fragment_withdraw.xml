@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/navy">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <!-- android:orientation="horizontal" 이거 안하면 가이드라인이랑 연결된 놈들 다 고정됨.-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tradeCenter"
+            android:textSize="24sp"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/titleGuideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            tools:text="거래소" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/titleGuideline"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.07" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/searchEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:hint="@string/searchEditText"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/searchEditTextWhiteline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/titleGuideline"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!-- 두 개의 흰색, 회색 라인은 각 위아래의 가이드 라인을 기준으로 비율을 설정하였음. -->
+
+        <View
+            android:id="@+id/searchEditTextWhiteline"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleGuideline"
+            app:layout_constraintVertical_bias="0.06" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalAssets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/totalAssets"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/krwBtcTabGrayLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/searchEditTextWhiteline" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalAssetsMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:text="4,503,302 KRW"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/krwBtcTabGrayLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.953"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/searchEditTextWhiteline" />
+
+        <View
+            android:id="@+id/krwBtcTabGrayLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/itemTabGrayLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleGuideline"
+            app:layout_constraintVertical_bias="0.66" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/onlyHoldCoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/onlyHoldCoin"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/itemTabGrayLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/krwBtcTabGrayLine" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/itemTabGrayLine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/itemTabGrayLine"
+            tools:listitem="@layout/fragment_withdraw_list_item" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
