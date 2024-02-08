@@ -2,7 +2,7 @@ package com.clone_coding.data.db.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-class UpbitCurrentPriceInformationResponse (
+data class TradeCenterCurrentPriceResponse (
 
     // 종목 구분 코드 (예: "KRW-BTC", "KRW-ETH")
     @SerializedName("market") val market: String,
@@ -83,8 +83,8 @@ class UpbitCurrentPriceInformationResponse (
     @SerializedName("timestamp") val timestamp: Long
 )
 
-// 거래서 KRW 탭 Response
-class KRWTabResponse(
+// 거래서 KRW 탭 초기 데이터 Response
+data class TradeCenterKRWTabInitializePriceResponse(
 
     // 종목 구분 코드 (예: "KRW-BTC", "KRW-ETH")
     @SerializedName("market") val market: String,
