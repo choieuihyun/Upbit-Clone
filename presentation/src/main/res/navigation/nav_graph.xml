@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/tradeCenterFragment">
 
+    <fragment
+        android:id="@+id/tradeCenterFragment"
+        android:name="com.clone_coding.presentation.tradecenter.TradeCenterFragment"
+        android:label="TradeCenterFragment" />
+    <fragment
+        android:id="@+id/coinInfoFragment"
+        android:name="com.clone_coding.presentation.coininfo.CoinInfoFragment"
+        android:label="CoinInfoFragment" />
+    <fragment
+        android:id="@+id/moreInfoFragment"
+        android:name="com.clone_coding.presentation.moreinfo.MoreInfoFragment"
+        android:label="MoreInfoFragment" />
+    <fragment
+        android:id="@+id/withdrawFragment"
+        android:name="com.clone_coding.presentation.withdraw.WithdrawFragment"
+        android:label="WithdrawFragment" />
+    <fragment
+        android:id="@+id/investmentDetailFragment"
+        android:name="com.clone_coding.presentation.investment.InvestmentDetailFragment"
+        android:label="InvestmentDetailFragment" />
 </navigation>
