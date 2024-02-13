@@ -1,4 +1,4 @@
-package com.clone_coding.data.db.remote.response
+package com.clone_coding.data.db.remote.response.upbit_api_response
 
 import com.google.gson.annotations.SerializedName
 
