@@ -37,7 +37,6 @@ class CoinInfoCoinTrendRepositoryImpl @Inject constructor(
     }
 
 
-
 //    override suspend fun getCoinInfoCoinTrendVolumePower() {
 //
 //        volumePowerRate.addSource(accAskVolume) { askVolume ->
