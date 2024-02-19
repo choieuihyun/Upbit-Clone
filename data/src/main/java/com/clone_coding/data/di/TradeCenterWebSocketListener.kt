@@ -3,12 +3,10 @@ package com.clone_coding.data.di
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.gson.JsonParser
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 import okio.ByteString
-import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.math.BigDecimal
@@ -16,7 +14,7 @@ import java.math.RoundingMode
 import javax.inject.Inject
 
 // WebSocket 리스너
-class YourWebSocketListener @Inject constructor() : WebSocketListener() {
+class TradeCenterWebSocketListener @Inject constructor() : WebSocketListener() {
 
     // 현재가(Ticker) 데이터
 
@@ -49,17 +47,19 @@ class YourWebSocketListener @Inject constructor() : WebSocketListener() {
         try {
                 val jsonObject = JSONObject(bytes.utf8().toString())
                 val parseCode = jsonObject.getString("code")
-                val parseTradePrice = BigDecimal(jsonObject.getDouble("trade_price")).toPlainString()
-                val parseSignedChangeRate = BigDecimal(jsonObject.getDouble("signed_change_rate") * 100).setScale(3, RoundingMode.DOWN).toPlainString()
+                val parseTradePrice = BigDecimal(jsonObject.getDouble("trade_price")).setScale(1, RoundingMode.DOWN).toPlainString() // 원래는 double로 해야함. 근데 뭔가 이상해서 일단 바꿈
+                val parseSignedChangeRate = BigDecimal(jsonObject.getDouble("signed_change_rate") * 100).setScale(2, RoundingMode.DOWN).toPlainString()
                 val parseAccTradePrice24H = BigDecimal(jsonObject.getDouble("acc_trade_price_24h") / 1000000).setScale(0,RoundingMode.DOWN).toPlainString()
+
                 // 각 메시지에 대한 처리 로직 수행
-                Log.d("codeAndTradePrice", "code : $code | tradePrice : $tradePrice")
-                Log.d("codeAndTradePrice2",  "signedChangeRate : $signedChangeRate% | accTradePrice24H : $accTradePrice24H")
+//                Log.d("codeAndTradePrice", "code : $code | tradePrice : $tradePrice")
+//                Log.d("codeAndTradePrice2",  "signedChangeRate : $signedChangeRate% | accTradePrice24H : $accTradePrice24H")
 
                 _code.postValue(parseCode)
                 _tradePrice.postValue(parseTradePrice)
                 _signedChangeRate.postValue(parseSignedChangeRate)
                 _accTradePrice24H.postValue(parseAccTradePrice24H)
+
 
         } catch (e: JSONException) {
             e.printStackTrace()

@@ -1,6 +1,4 @@
-package com.clone_coding.data.db.remote.response
-
-import retrofit2.Response
+package com.clone_coding.data.db.remote.response.upbit_api_response
 
 // 이거 지금 아예 필요가 없음.
 data class TradeCenterKRWTabMarketListResponse (
