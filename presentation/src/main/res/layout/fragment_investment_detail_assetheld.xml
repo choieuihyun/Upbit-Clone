@@ -7,7 +7,7 @@
 
         <variable
             name="investmentAssetHoldViewModel"
-            type="com.clone_coding.presentation.investment.InvestmentDetailAssetholdViewModel" />
+            type="com.clone_coding.presentation.investment.assethold.InvestmentDetailAssetholdViewModel" />
 
     </data>
 
