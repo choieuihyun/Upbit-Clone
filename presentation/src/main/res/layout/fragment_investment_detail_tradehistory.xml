@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/navy"
         android:orientation="vertical">
 
         <LinearLayout
@@ -20,7 +19,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="@string/oneMonth_all_trade" />
+                android:text="@string/oneMonth_all_trade"
+                android:textColor="@color/white" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -37,42 +37,94 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:text="@string/executionTime"/>
+                android:layout_margin="8dp"
+                android:text="@string/executionTime"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="@color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:text="@string/coinName"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/coinName"
+                android:gravity="center"
                 android:layout_weight="1"
-                tools:listitem="@layout/fragment_investment_detail_investmentprofitloss_list" />
+                android:textColor="@color/white" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                tools:listitem="@layout/fragment_investment_detail_investmentprofitloss_list" />
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:textColor="@color/white" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:textColor="@color/white" />
 
         </LinearLayout>
+
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/navy">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tradeHistoryRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </HorizontalScrollView>
+
     </LinearLayout>
 
-</ScrollView>
+
+</layout>
