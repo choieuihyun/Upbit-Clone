@@ -33,7 +33,7 @@ class InvestmentDetailAssetholdAdapter: ListAdapter<CoinInvestmentAssetHoldModel
         "XTZ" to "테조스", "HIVE" to "하이브", "KAVA" to "카바",
         "AHT" to "아하토큰", "LINK" to "체인링크", "BORA" to "보라",
         "JST" to "저스트", "CRO" to "크로노스", "SXP" to "스와이프",
-        "HUNT" to "헌트", "TON" to "토카막네트워크", "PLA" to "플레이댑",
+        "HUNT" to "헌트", "TON" to "토카막네트워크", "PDA" to "플레이댑",
         "DOT" to "폴카닷", "MVL" to "엠블", "REI" to "레이",
         "AQT" to "알파쿼크", "STRAX" to "스트라티스", "GLM" to "골렘",
         "SSX" to "썸씽", "META" to "메타디움", "FCT2" to "피르마체인",
@@ -47,7 +47,7 @@ class InvestmentDetailAssetholdAdapter: ListAdapter<CoinInvestmentAssetHoldModel
         "EGLD" to "멀티버스엑스", "SUI" to "수이", "GRT" to "더그래프",
         "BLUR" to "블러", "IMX" to "이뮤터블엑스", "SEI" to "세이",
         "MINA" to "미나", "CTC" to "크레딧코인", "ASTR" to "아스타",
-        "ID" to "스페이스아이디")
+        "ID" to "스페이스아이디", "PUNDIX" to "펀디엑스")
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

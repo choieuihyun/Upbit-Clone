@@ -4,7 +4,7 @@ package com.clone_coding.presentation.tradecenter
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.clone_coding.domain.model.TestModel
+import com.clone_coding.domain.model.TradeCenterKRWTabModel
 import com.clone_coding.presentation.R
 import com.clone_coding.presentation.databinding.FragmentTradeListItemBinding
 
@@ -13,7 +13,7 @@ class TradeCenterKRWTabViewHolder(
     private val coinTickerMap: Map<String, String>
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(data: TestModel) {
+    fun bind(data: TradeCenterKRWTabModel) {
 
         binding.krwTab = data
 

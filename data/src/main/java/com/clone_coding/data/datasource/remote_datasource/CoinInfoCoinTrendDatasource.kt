@@ -1,5 +1,6 @@
 package com.clone_coding.data.datasource.remote_datasource
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.clone_coding.data.db.remote.api.CoinGeckoApi
 import com.clone_coding.data.db.remote.api.UpbitApi
@@ -31,9 +32,10 @@ class CoinInfoCoinTrendDatasource @Inject constructor(
     private val webSocketClient: WebSocketClient
     ) {
 
+    // 이걸 동적으로 바꿔야겠는데
     private val krwMarketList = listOf("KRW-BTC", "KRW-ETH", "KRW-NEO", "KRW-MTL", "KRW-XRP",
         "KRW-ETC", "KRW-SNT", "KRW-WAVES", "KRW-XEM", "KRW-QTUM", "KRW-LSK", "KRW-STEEM",
-        "KRW-XLM", "KRW-ARDR", "KRW-ARK", "KRW-STORJ", "KRW-GRS",
+        "KRW-XLM", "KRW-ARDR", "KRW-ARK", "KRW-STORJ", "KRW-GRS", "KRW-PUNDIX",
         "KRW-ADA", "KRW-SBD", "KRW-POWR", "KRW-BTG", "KRW-ICX", "KRW-EOS", "KRW-TRX",
         "KRW-SC", "KRW-ONT", "KRW-ZIL", "KRW-POLYX", "KRW-ZRX", "KRW-LOOM", "KRW-BCH",
         "KRW-HIFI", "KRW-ONG", "KRW-GAS", "KRW-UPP", "KRW-ELF", "KRW-KNC", "KRW-THETA",
@@ -41,7 +43,7 @@ class CoinInfoCoinTrendDatasource @Inject constructor(
         "KRW-ATOM", "KRW-TT", "KRW-CRE", "KRW-MBL", "KRW-WAXP", "KRW-HBAR", "KRW-MED",
         "KRW-STPT", "KRW-ORBS", "KRW-CHZ", "KRW-XTZ", "KRW-HIVE", "KRW-KAVA", "KRW-AHT",
         "KRW-LINK", "KRW-BORA", "KRW-JST", "KRW-CRO", "KRW-SXP", "KRW-HUNT", "KRW-TON",
-        "KRW-PLA", "KRW-DOT", "KRW-MVL", "KRW-AQT", "KRW-STRAX", "KRW-GLM", "KRW-SSX",
+        "KRW-PDA", "KRW-DOT", "KRW-MVL", "KRW-AQT", "KRW-STRAX", "KRW-GLM", "KRW-SSX",
         "KRW-META", "KRW-FCT2", "KRW-CBK", "KRW-SAND", "KRW-HPO", "KRW-DOGE", "KRW-XEC",
         "KRW-SOL", "KRW-MATIC", "KRW-AAVE", "KRW-1INCH", "KRW-FLOW", "KRW-AXS", "KRW-STX",
         "KRW-NEAR", "KRW-ALGO", "KRW-T", "KRW-CELO", "KRW-GMT", "KRW-APT", "KRW-SHIB",
@@ -49,6 +51,7 @@ class CoinInfoCoinTrendDatasource @Inject constructor(
         "KRW-SEI", "KRW-MINA", "KRW-CTC", "KRW-ASTR", "KRW-ID"
     )
 
+    // 이것도 동적으로..
     private val krwMarketCoinNameList = listOf(
         "bitcoin", "ethereum", "neo", "metal", "ripple", "ethereum-classic", "status",
         "waves", "nem", "qtum", "lisk", "steem", "stellar", "ardor", "ark", "storj",
@@ -66,7 +69,7 @@ class CoinInfoCoinTrendDatasource @Inject constructor(
         "algorand", "tomochain", "celo", "global-markets-token", "alpha-platform", "shiba-inu",
         "mask-network", "arbitrum", "elrond", "swissborg", "the-graph", "blur-network",
         "immutable-x", "seigniorage-shares", "mina-protocol", "culture-ticket-chain", "astral-protocol",
-        "everest"
+        "everest", "pundix"
     )
 
     val code: LiveData<String>
@@ -129,6 +132,8 @@ class CoinInfoCoinTrendDatasource @Inject constructor(
         }
     }
 
+    // 이게 진짜 쓰레기 코드라고 생각한다.
+    // 반환 타입에 Response가
     suspend fun getCoinMarketCapList(): NetworkResult<MutableList<List<CoinAllDataResponse>?>> {
 
         //val chunkedKrwMarketList = krwMarketCoinNameList.chunked(krwMarketList.size / 10)
@@ -151,7 +156,9 @@ class CoinInfoCoinTrendDatasource @Inject constructor(
 
             }
 
+            // 올바른 구조가 아니여라.
             responseList.add(response.body())
+            Log.d("responseList", responseList.size.toString())
 
         }
 
@@ -162,6 +169,5 @@ class CoinInfoCoinTrendDatasource @Inject constructor(
             NetworkResult.Error(networkError)
         }
     }
-
 
 }
