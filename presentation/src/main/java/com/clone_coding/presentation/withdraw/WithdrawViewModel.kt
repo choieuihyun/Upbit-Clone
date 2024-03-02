@@ -24,8 +24,8 @@ class WithdrawViewModel @Inject constructor(
     val withdrawList: LiveData<List<CoinWithdrawCoinListModel>?>
         get() = _withdrawList
 
-    private val _holdAsset = MutableLiveData<Int>()
-    val holdAsset: LiveData<Int>
+    private val _holdAsset = MutableLiveData<String>()
+    val holdAsset: LiveData<String>
         get() = _holdAsset
 
     fun getWithDrawList() {
@@ -39,7 +39,22 @@ class WithdrawViewModel @Inject constructor(
                 is NetworkResult.Success -> {
 
                     Log.d("merged", result.data.toString())
+                    // 지금 이렇게 했는데 화면을 켰을 때 화면에 바로 데이터가 안뜸.
+                    // 변화가 감지되지 않아서? 그렇다는건 내가 데이터를 불러올 때 무언가 문제가 있었다?
+                    // 근데 그게 문제가 아니라 Livedata를 감지하는 건데 문제 없잖아.
                     _withdrawList.value = result.data
+
+                    for(index in result.data.indices) {
+
+                        val parseAsset = BigDecimal(result.data[index].coinTotalPrice.toDouble()).setScale(0, RoundingMode.DOWN).toInt()
+
+                        sumHoldAsset += parseAsset
+
+                    }
+
+                    _holdAsset.value = sumHoldAsset.toString()
+
+                    Log.d("withdrawViewModel", sumHoldAsset.toString())
 
                 }
 
