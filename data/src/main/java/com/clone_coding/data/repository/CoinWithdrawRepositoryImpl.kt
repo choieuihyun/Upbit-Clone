@@ -38,8 +38,8 @@ class CoinWithdrawRepositoryImpl @Inject constructor(
         // 데이터를 보니까 AssetHold의 currency와 AllData의 symbol의 대문자 치환이 같을 경우
         // CoinWithdrawCoinListModel에 AssetHold의 값을 넣어주고 반환. 이게 맞지 않냐?
 
-        Log.d("withDrawRepoImplHoldAsset", holdAsset.toNetworkResult().toString())
-        Log.d("withDrawRepoImplcoinList", coinList.toNetworkResult().toString())
+        Log.d("withdrawRepoHoldAsset1", holdAsset.toNetworkResult().toString())
+        Log.d("withdrawRepoCoinList2", coinList.toNetworkResult().toString())
 
         // null일 가능성도 있다고 본다. 처리 제대로 해줘야함.
         for (holdAssetItem in holdAssetResult!!) {
@@ -71,8 +71,6 @@ class CoinWithdrawRepositoryImpl @Inject constructor(
 
         }
 
-        Log.d("mergedList1", mergedResult.size.toString())
-
         for (coinListItem in coinListResult) {
             // 1. 그냥 이대로 Model로 생성해서 넘기고 이 안에서 내부 데이터 계산
             // 2. Response를 하나 새로 만들고 매퍼에서 모델로 매핑하는 메서드 만든 후,
@@ -92,12 +90,11 @@ class CoinWithdrawRepositoryImpl @Inject constructor(
 
         }
 
-        Log.d("coinListResult", holdAssetResult.toString())
-        Log.d("mergedList2", mergedResult.size.toString())
 
         // 여기서 왜 다시 감쌌냐면, datasource에서 받아온 것들을 한 번 벗겨내서 다시 감싸서 전달하기 위해.
         return try {
 
+            Log.d("withdrawRepoImplMerged", mergedResult.toString())
             NetworkResult.Success(mergedResult)
 
         } catch (e: Exception) {
