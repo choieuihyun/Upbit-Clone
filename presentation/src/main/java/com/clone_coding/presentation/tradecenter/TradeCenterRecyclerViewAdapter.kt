@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.clone_coding.domain.model.TestModel
+import com.clone_coding.domain.model.TradeCenterKRWTabModel
 import com.clone_coding.presentation.databinding.FragmentTradeListItemBinding
 
 
-class TradeCenterRecyclerViewAdapter : ListAdapter<TestModel, TradeCenterKRWTabViewHolder>(diffCallback){
+class TradeCenterRecyclerViewAdapter : ListAdapter<TradeCenterKRWTabModel, TradeCenterKRWTabViewHolder>(diffCallback){
 
     val coinTickersMap = mapOf("KRW-BTC" to "비트코인",
         "KRW-ETH" to "이더리움", "KRW-NEO" to "네오", "KRW-MTL" to "메탈",
@@ -33,7 +33,7 @@ class TradeCenterRecyclerViewAdapter : ListAdapter<TestModel, TradeCenterKRWTabV
         "KRW-XTZ" to "테조스", "KRW-HIVE" to "하이브", "KRW-KAVA" to "카바",
         "KRW-AHT" to "아하토큰", "KRW-LINK" to "체인링크", "KRW-BORA" to "보라",
         "KRW-JST" to "저스트", "KRW-CRO" to "크로노스", "KRW-SXP" to "스와이프",
-        "KRW-HUNT" to "헌트", "KRW-TON" to "톤", "KRW-PLA" to "플레이댑",
+        "KRW-HUNT" to "헌트", "KRW-TON" to "톤", "KRW-PDA" to "플레이댑",
         "KRW-DOT" to "폴카닷", "KRW-MVL" to "엠블", "KRW-REI" to "레이",
         "KRW-AQT" to "알파쿼크", "KRW-STRAX" to "스트라티스", "KRW-GLM" to "골렘",
         "KRW-SSX" to "썸씽", "KRW-META" to "메타디움", "KRW-FCT2" to "피르마체인",
@@ -47,7 +47,7 @@ class TradeCenterRecyclerViewAdapter : ListAdapter<TestModel, TradeCenterKRWTabV
         "KRW-EGLD" to "멀티버스엑스", "KRW-SUI" to "수이", "KRW-GRT" to "더그래프",
         "KRW-BLUR" to "블러", "KRW-IMX" to "이뮤터블엑스", "KRW-SEI" to "세이",
         "KRW-MINA" to "미나", "KRW-CTC" to "크레딧코인", "KRW-ASTR" to "아스타",
-        "KRW-ID" to "스페이스아이디"
+        "KRW-ID" to "스페이스아이디", "KRW-PUNDIX" to "펀디엑스"
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TradeCenterKRWTabViewHolder {
@@ -70,13 +70,13 @@ class TradeCenterRecyclerViewAdapter : ListAdapter<TestModel, TradeCenterKRWTabV
 
     companion object {
 
-        private val diffCallback = object : DiffUtil.ItemCallback<TestModel>() {
+        private val diffCallback = object : DiffUtil.ItemCallback<TradeCenterKRWTabModel>() {
 
-            override fun areItemsTheSame(oldItem: TestModel, newItem: TestModel): Boolean {
+            override fun areItemsTheSame(oldItem: TradeCenterKRWTabModel, newItem: TradeCenterKRWTabModel): Boolean {
                 return oldItem.hashCode() == newItem.hashCode()
             }
 
-            override fun areContentsTheSame(oldItem: TestModel, newItem: TestModel): Boolean {
+            override fun areContentsTheSame(oldItem: TradeCenterKRWTabModel, newItem: TradeCenterKRWTabModel): Boolean {
                 return oldItem == newItem
             }
 
