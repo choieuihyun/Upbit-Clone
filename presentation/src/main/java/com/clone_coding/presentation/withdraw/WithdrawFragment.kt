@@ -33,7 +33,6 @@ class WithdrawFragment: BaseFragment<FragmentWithdrawBinding>(R.layout.fragment_
 
         viewModel.withdrawList.observe(viewLifecycleOwner) {
 
-            Log.d("mergedListFragment", it.toString())
             withdrawListAdapter.submitList(it)
 
         }
