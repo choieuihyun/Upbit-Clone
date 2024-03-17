@@ -155,9 +155,11 @@ class CoinWithdrawDatasource @Inject constructor(
 
         }
 
+        Log.d("withdrawDatasource1", responseList.toString())
+
         return try {
 
-            Log.d("withdrawDatasource1", responseList.toString())
+
             NetworkResult.Success(responseList)
 
         } catch (e: Exception) {
