@@ -177,7 +177,7 @@ class CoinWithdrawDatasource @Inject constructor(
 
         return try {
 
-            Log.d("withdrawDatasource2", response.toString())
+            Log.d("withdrawDatasource2", response.body().toString())
             NetworkResult.Success(response.body())
 
         } catch (e: Exception) {

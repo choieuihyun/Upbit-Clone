@@ -102,13 +102,9 @@ class CoinWithdrawRepositoryImpl @Inject constructor(
 
             }
 
-
-
             mergedResult
 
         }
-
-        Log.d("withdrawRepoImplMerged22", result.toString())
 
         // 여기서 왜 다시 감쌌냐면, datasource에서 받아온 것들을 한 번 벗겨내서 다시 감싸서 전달하기 위해.
         return try {
