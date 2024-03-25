@@ -34,16 +34,13 @@ class WithdrawViewModel @Inject constructor(
         viewModelScope.launch {
 
             var sumHoldAsset = 0
+            val result = repository.getWithdrawList()
 
-            when(val result = repository.getWithdrawList()) {
+            when(result) {
 
                 is NetworkResult.Success -> {
 
                     Log.d("merged", result.data.toString())
-                    // 지금 이렇게 했는데 화면을 켰을 때 화면에 바로 데이터가 안뜸.
-                    // 변화가 감지되지 않아서? 그렇다는건 내가 데이터를 불러올 때 무언가 문제가 있었다?
-                    // 근데 그게 문제가 아니라 Livedata를 감지하는 건데 문제 없잖아.
-                    _withdrawList.value = result.data
 
                     for(index in result.data.indices) {
 
@@ -53,7 +50,13 @@ class WithdrawViewModel @Inject constructor(
 
                     }
 
+                    // 지금 이렇게 했는데 화면을 켰을 때 화면에 바로 데이터가 안뜸.
+                    // 변화가 감지되지 않아서? 그렇다는건 내가 데이터를 불러올 때 무언가 문제가 있었다?
+                    // 근데 그게 문제가 아니라 Livedata를 감지하는 건데 문제 없잖아.
+                    _withdrawList.value = result.data
+
                     _holdAsset.value = sumHoldAsset.toString()
+
 
                     Log.d("withdrawViewModel", sumHoldAsset.toString())
 

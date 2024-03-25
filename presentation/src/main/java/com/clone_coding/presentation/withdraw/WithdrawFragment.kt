@@ -23,8 +23,6 @@ class WithdrawFragment: BaseFragment<FragmentWithdrawBinding>(R.layout.fragment_
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        Log.d("mergedListState", "sibal")
-
         setupRecyclerView() // 여기 Create로 못올리는 이유 : BaseFragment에서 binding을 초기화시키는 부분을 봐라.
 
         binding.withdrawViewModel = viewModel
