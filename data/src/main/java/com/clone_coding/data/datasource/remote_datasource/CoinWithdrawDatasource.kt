@@ -7,9 +7,7 @@ import com.clone_coding.data.db.remote.response.coin_investment_asset_hold_respo
 import com.clone_coding.data.db.remote.response.coingecko_api_response.CoinAllDataResponse
 import com.clone_coding.domain.error.NetworkErrorHandler
 import com.clone_coding.domain.error.NetworkResult
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.withContext
+import java.lang.IllegalStateException
 import javax.inject.Inject
 import kotlin.Exception
 
@@ -21,6 +19,7 @@ class CoinWithdrawDatasource @Inject constructor(
 
 ) {
 
+    // playchip(플레이 댑) 제거, ssx(썸씽) 제거
     private val krwMarketCoinNameList = listOf(
         "bitcoin",
         "ethereum",
@@ -88,7 +87,6 @@ class CoinWithdrawDatasource @Inject constructor(
         "swipe",
         "hunt-token",
         "tokamak-network",
-        "playchip",
         "polkadot",
         "mass-vehicle-ledger",
         "alpha-quadrant",
@@ -127,7 +125,8 @@ class CoinWithdrawDatasource @Inject constructor(
         "mina-protocol",
         "culture-ticket-chain",
         "astral-protocol",
-        "everest"
+        "everest",
+        "mantle"
     )
 
 
@@ -135,37 +134,36 @@ class CoinWithdrawDatasource @Inject constructor(
 
         val responseList = mutableListOf<CoinAllDataResponse>()
 
-        val response =
+        try {
 
-            coinGeckoApi.getCoinAllDataList(
-                "krw",
-                krwMarketCoinNameList.joinToString(","),
-                "market_cap_desc",
-                "100",
-                "1",
-                "7d",
-                "ko"
-            )
+            val response =
 
-        response.body()?.let { body ->
+                coinGeckoApi.getCoinAllDataList(
+                    "krw",
+                    krwMarketCoinNameList.joinToString(","),
+                    "market_cap_desc",
+                    "100",
+                    "1",
+                    "7d",
+                    "ko"
+                )
 
-            for (data in body) {
-                responseList.add(data)
+            response.body()?.let { body ->
+
+                for (data in body) {
+                    responseList.add(data)
+                }
+
             }
 
-        }
+            Log.d("withdrawDatasource1", responseList.toString())
 
-        Log.d("withdrawDatasource1", responseList.toString())
-
-        return try {
-
-
-            NetworkResult.Success(responseList)
+            return NetworkResult.Success(responseList)
 
         } catch (e: Exception) {
 
             val networkError = networkErrorHandler.errorMessage(e)
-            NetworkResult.Error(networkError)
+            return NetworkResult.Error(networkError)
 
         }
 
