@@ -8,9 +8,8 @@ import com.clone_coding.data.mapper.toModel
 import com.clone_coding.data.mapper.toNetworkResult
 import com.clone_coding.data.mapper.toTestModel
 import com.clone_coding.domain.error.NetworkResult
-import com.clone_coding.domain.model.TestModel
 import com.clone_coding.domain.model.TradeCenterKRWTabInitializePriceModel
-import com.clone_coding.domain.model.TradeCenterKRWTabMarketListModel
+import com.clone_coding.domain.model.TradeCenterKRWTabModel
 import com.clone_coding.domain.repository.UpbitTradeCenterRepository
 import javax.inject.Inject
 
@@ -30,6 +29,7 @@ class UpbitTradeCenterRepositoryImpl @Inject constructor(
     override val accTradePrice24H: LiveData<String>
         get() = datasource.accTradePrice24H
 
+
     override suspend fun getTradeCenterRealTimeInfo() {
 
         datasource.connectWebSocket()
@@ -37,21 +37,21 @@ class UpbitTradeCenterRepositoryImpl @Inject constructor(
     }
 
     // KRW 탭 통합 데이터
-    override suspend fun getTradeCenterMarketList(): NetworkResult<TradeCenterKRWTabMarketListModel> {
+//    override suspend fun getTradeCenterMarketList(): NetworkResult<TradeCenterKRWTabMarketListModel> {
+//
+//        val a = datasource.getTradeCenterMarketList()
+//
+//        val b = a.mapNetworkResult { it ->
+//            it.toModel()
+//        }
+//
+//        Log.d("repoImpl", b.toNetworkResult().tradeCenterMarketList.toString())
+//
+//        return b
+//
+//    }
 
-        val a = datasource.getTradeCenterMarketList()
-
-        val b = a.mapNetworkResult { it ->
-            it.toModel()
-        }
-
-        Log.d("repoImpl", b.toNetworkResult().tradeCenterMarketList.toString())
-
-        return b
-
-    }
-
-    override suspend fun getTradeCenterCurrentPrice(): NetworkResult<List<TestModel>?> {
+    override suspend fun getTradeCenterCurrentPrice(): NetworkResult<List<TradeCenterKRWTabModel>?> {
 
         val a = datasource.getTradeCenterCurrentPrice()
 

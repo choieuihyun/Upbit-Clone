@@ -10,8 +10,6 @@ class WithdrawViewHolder(
     private val binding: FragmentWithdrawListItemBinding
 
 ): RecyclerView.ViewHolder(binding.root) {
-
-
     fun bind(data: CoinWithdrawCoinListModel) {
 
         binding.withdrawModel = data
