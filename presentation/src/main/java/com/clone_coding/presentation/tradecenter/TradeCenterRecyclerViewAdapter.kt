@@ -11,7 +11,7 @@ import com.clone_coding.presentation.databinding.FragmentTradeListItemBinding
 
 class TradeCenterRecyclerViewAdapter : ListAdapter<TradeCenterKRWTabModel, TradeCenterKRWTabViewHolder>(diffCallback){
 
-    val coinTickersMap = mapOf("KRW-BTC" to "비트코인",
+    private val coinTickersMap = mapOf("KRW-BTC" to "비트코인",
         "KRW-ETH" to "이더리움", "KRW-NEO" to "네오", "KRW-MTL" to "메탈",
         "KRW-XRP" to "리플", "KRW-ETC" to "이더리움클래식", "KRW-SNT" to "스테이터스네트워크토큰",
         "KRW-WAVES" to "웨이브", "KRW-XEM" to "넴", "KRW-QTUM" to "퀀텀",
@@ -50,6 +50,12 @@ class TradeCenterRecyclerViewAdapter : ListAdapter<TradeCenterKRWTabModel, Trade
         "KRW-ID" to "스페이스아이디", "KRW-PUNDIX" to "펀디엑스"
     )
 
+    private var onItemClickListener: ((TradeCenterKRWTabModel) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (TradeCenterKRWTabModel) -> Unit) {
+        onItemClickListener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TradeCenterKRWTabViewHolder {
 
         return TradeCenterKRWTabViewHolder(FragmentTradeListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false), coinTickersMap)
@@ -61,6 +67,14 @@ class TradeCenterRecyclerViewAdapter : ListAdapter<TradeCenterKRWTabModel, Trade
         val krwTabData = currentList[position]
 
         holder.bind(krwTabData)
+
+        holder.itemView.setOnClickListener {
+
+            onItemClickListener?.let {
+                it(krwTabData)
+            }
+
+        }
 
     }
 
