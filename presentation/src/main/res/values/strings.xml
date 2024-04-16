@@ -1,0 +1,248 @@
+<resources>
+
+    <!-- fragment_trade.xml -->
+
+    <string name="searchEditText">코인명/심볼 검색</string>
+
+    <string name="tradeCenter">거래소</string>
+    <string name="coinInfo">코인정보</string>
+    <string name="investmentDetail">투자내역</string>
+    <string name="deposit_withdrawal">입출금</string>
+    <string name="moreInfo">더보기</string>
+
+    <string name="possessionButton">보유</string>
+    <string name="krwButton">KRW</string>
+    <string name="btcButton">BTC</string>
+    <string name="usdtButton">USDT</string>
+    <string name="favoriteButton">관심</string>
+
+    <string name="koreanName">한글명</string>
+    <string name="currentPrice">현재가</string>
+    <string name="comparePreviousDay">전일대비</string>
+    <string name="transactionAmount">거래대금</string>
+
+
+    <!-- fragment_coin_info_tab_coinTrend.xml -->
+
+    <string name="highestIncreaseCoin">상승률 상위 코인</string>
+    <string name="today">오늘</string>
+    <string name="one_week">1주일</string>
+    <string name="one_month">1개월</string>
+    <string name="three_month">3개월</string>
+    <string name="sixth_month">6개월</string>
+    <string name="one_year">1년</string>
+    <string name="dailyTighteningStrengthRanking">일 체결강도 순위</string>
+    <string name="buy">매수</string>
+    <string name="sell">매도</string>
+    <string name="ubciIndex">UBCI 인덱스</string>
+    <string name="coinMarketCap">코인 시가 총액</string>
+
+
+    <!-- fragment_coin_info_tab_coinNews.xml -->
+
+    <string name="majorNews">주요 뉴스</string>
+    <string name="marketCondition">시황</string>
+    <string name="normal">일반</string>
+    <string name="regulation">규제</string>
+    <string name="industry">산업</string>
+    <string name="column">칼럼</string>
+    <string name="coin">코인</string>
+    <string name="tech">테크</string>
+    <string name="policy">정책</string>
+    <string name="digitalAssetReport">디지털 자산 보고서</string>
+    <string name="digitalAssetInside">디지털 자산 인사이드</string>
+
+
+    <!-- fragment_investment_detail_assetheld.xml -->
+
+    <string name="myHoldAsset">내 보유자산</string>
+    <string name="exchangeKRW">KRW 환산 후 추정값</string>
+    <string name="holdKRW">보유 KRW</string>
+    <string name="totalPurchase">총매수</string>
+    <string name="totalEvaluation">총평가</string>
+    <string name="evaluationProfitLoss">평가손익</string>
+    <string name="profitLossPercentage">수익률</string>
+    <string name="totalAssets">총 보유자산</string>
+    <string name="portfolioAssets">보유자산 포트폴리오</string>
+    <string name="notSupportTrading">거래미지원/소액 자산 숨기기</string>
+    <string name="holdingQuantity">보유수량</string>
+    <string name="averagePrice">매수평균가</string>
+    <string name="evaluationAmount">평가금액</string>
+    <string name="purchaseAmount">매수금액</string>
+    <string name="investmentProfitLoss">투자손익</string>
+    <string name="investmentProfitLossGraph">투자손익 그래프</string>
+    <string name="investmentProfitLossDetail">투자손익 상세</string>
+    <string name="tradeHistory">거래내역</string>
+    <string name="unfilledOrders">미체결</string>
+    <string name="simpleProfitLossPercentage">단순 수익률</string>
+    <string name="dateCumulativeProfitLoss">기간 누적 손익</string>
+    <string name="dateCumulativeProfitLossPercentage">기간 누적 수익률</string>
+    <string name="investmentCapital">투자원금</string>
+    <string name="cumulativeProfitLossPercentage">누적 수익률</string>
+    <string name="profitLoss">손익</string>
+    <string name="date">일자</string>
+    <string name="dailyProfitLoss">일일 손익</string>
+    <string name="dailyProfitLossPercentage">일일 수익률</string>
+    <string name="closingBalance">기말 자산</string>
+    <string name="deposit">입금</string>
+    <string name="cumulativeProfitLoss">누적 손익</string>
+    <string name="initialBalance">기초 자산</string>
+    <string name="withdrawal">출금</string>
+
+
+    <!-- fragment_investment_detail_tradehistory -->
+
+    <string name="oneMonth_all_trade">1개월 * 거래전체</string>
+    <string name="coinSearch">코인검색</string>
+    <string name="executionTime">체결시간</string>
+    <string name="coinName">코인명</string>
+    <string name="market">마켓</string>
+    <string name="type">종류</string>
+    <string name="tradeQuantity">거래수량</string>
+    <string name="tradePrice">거래단가</string>
+    <string name="tradeAmount">거래금액</string>
+    <string name="commission">수수료</string>
+    <string name="settlementAmount">정산금액</string>
+    <string name="orderTime">주문시간</string>
+
+    <!-- fragment_investment_detail_unexecuted -->
+
+    <string name="orderAll">주문 전체</string>
+    <string name="selectOrderCancel">선택주문 취소</string>
+    <string name="marketName">마켓명</string>
+    <string name="watchPrice">감시가격</string>
+    <string name="orderQuantity">주문수량</string>
+    <string name="tradeType">거래종류</string>
+    <string name="orderPrice">주문가격</string>
+    <string name="unexecutedQuantity">미체결량</string>
+
+    <!-- fragment_withdraw -->
+
+    <string name="onlyHoldCoin">보유코인만</string>
+
+    <!-- fragment_more_info -->
+
+    <string name="alarmOption">알림설정</string>
+    <string name="displayOption">화면설정</string>
+    <string name="security">인증/보안</string>
+    <string name="staking">스테이킹</string>
+    <string name="lab">실험실</string>
+    <string name="notice">공지사항</string>
+    <string name="upbitNews">업비트 소식</string>
+    <string name="familyService">패밀리 서비스</string>
+
+
+    <!-- KRW 탭 코인 티커 리스트, string array에 저렇게 보관하는게 아니라 <item>으로만 가능 -->
+
+<!--    <string-array name="coin_tickers">-->
+
+<!--        <string name="KRW-ETH">이더리움</string>-->
+<!--        <string name="KRW-NEO">네오</string>-->
+<!--        <string name="KRW-MTL">메탈</string>-->
+<!--        <string name="KRW-XRP">리플</string>-->
+<!--        <string name="KRW-ETC">이더리움 클래식</string>-->
+<!--        <string name="KRW-SNT">스테이터스네트워크토큰</string>-->
+<!--        <string name="KRW-WAVES">웨이브</string>-->
+<!--        <string name="KRW-XEM">넴</string>-->
+<!--        <string name="KRW-QTUM">퀀텀</string>-->
+<!--        <string name="KRW-LSK">리스크</string>-->
+<!--        <string name="KRW-STEEM">스팀</string>-->
+<!--        <string name="KRW-XLM">스텔라루멘</string>-->
+<!--        <string name="KRW-ARDR">아더</string>-->
+<!--        <string name="KRW-ARK">아크</string>-->
+<!--        <string name="KRW-STORJ">스토리지</string>-->
+<!--        <string name="KRW-GRS">그로스톨코인</string>-->
+<!--        <string name="KRW-ADA">에이다</string>-->
+<!--        <string name="KRW-SBD">스팀달러</string>-->
+<!--        <string name="KRW-POWR">파워렛저</string>-->
+<!--        <string name="KRW-BTG">비트코인골드</string>-->
+<!--        <string name="KRW-ICX">아이콘</string>-->
+<!--        <string name="KRW-EOS">이오스</string>-->
+<!--        <string name="KRW-TRX">트론</string>-->
+<!--        <string name="KRW-SC">시아코인</string>-->
+<!--        <string name="KRW-ONT">온톨로지</string>-->
+<!--        <string name="KRW-ZIL">질리카</string>-->
+<!--        <string name="KRW-POLYX">폴리매쓰</string>-->
+<!--        <string name="KRW-ZRX">제로엑스</string>-->
+<!--        <string name="KRW-LOOM">룸네트워크</string>-->
+<!--        <string name="KRW-BCH">비트코인캐시</string>-->
+<!--        <string name="KRW-HIFI">하이파이</string>-->
+<!--        <string name="KRW-ONG">온톨로지가스</string>-->
+<!--        <string name="KRW-GAS">가스</string>-->
+<!--        <string name="KRW-UPP">센티넬프로토콜</string>-->
+<!--        <string name="KRW-ELF">엘프</string>-->
+<!--        <string name="KRW-KNC">카이버네트워크</string>-->
+<!--        <string name="KRW-THETA">쎄타토큰</string>-->
+<!--        <string name="KRW-QKC">쿼크체인</string>-->
+<!--        <string name="KRW-BTT">비트토렌트</string>-->
+<!--        <string name="KRW-MOC">모스코인</string>-->
+<!--        <string name="KRW-TFUEL">쎄타퓨엘</string>-->
+<!--        <string name="KRW-MANA">디센트럴랜드</string>-->
+<!--        <string name="KRW-ANKR">앵커</string>-->
+<!--        <string name="KRW-AERGO">아르고</string>-->
+<!--        <string name="KRW-ATOM">코스모스</string>-->
+<!--        <string name="KRW-TT">썬더토큰</string>-->
+<!--        <string name="KRW-CRE">캐리프로토콜</string>-->
+<!--        <string name="KRW-MBL">무비블록</string>-->
+<!--        <string name="KRW-WAXP">왁스</string>-->
+<!--        <string name="KRW-HBAR">헤데라해시그래프</string>-->
+<!--        <string name="KRW-MED">메디블록</string>-->
+<!--        <string name="KRW-STPT">에스티피</string>-->
+<!--        <string name="KRW-ORBS">오브스</string>-->
+<!--        <string name="KRW-CHZ">칠리즈</string>-->
+<!--        <string name="KRW-XTZ">테조스</string>-->
+<!--        <string name="KRW-HIVE">하이브</string>-->
+<!--        <string name="KRW-KAVA">카바</string>-->
+<!--        <string name="KRW-AHT">아하토큰</string>-->
+<!--        <string name="KRW-LINK">체인링크</string>-->
+<!--        <string name="KRW-BORA">보라</string>-->
+<!--        <string name="KRW-JST">저스트</string>-->
+<!--        <string name="KRW-CRO">크립토닷컴체인</string>-->
+<!--        <string name="KRW-SXP">스와이프</string>-->
+<!--        <string name="KRW-HUNT">헌트</string>-->
+<!--        <string name="KRW-TON">톤</string>-->
+<!--        <string name="KRW-PLA">플레이댑</string>-->
+<!--        <string name="KRW-DOT">폴카닷</string>-->
+<!--        <string name="KRW-MVL">엠블</string>-->
+<!--        <string name="KRW-REI">레이</string>-->
+<!--        <string name="KRW-AQT">알파쿼크</string>-->
+<!--        <string name="KRW-STRAX">스트라티스</string>-->
+<!--        <string name="KRW-GLM">골렘</string>-->
+<!--        <string name="KRW-SSX">썸씽엘씽</string>-->
+<!--        <string name="KRW-META">메타디움</string>-->
+<!--        <string name="KRW-FCT2">피르마체인</string>-->
+<!--        <string name="KRW-CBK">코박토큰</string>-->
+<!--        <string name="KRW-SAND">샌드박스</string>-->
+<!--        <string name="KRW-HPO">히포크랏</string>-->
+<!--        <string name="KRW-DOGE">도지코인</string>-->
+<!--        <string name="KRW-XEC">이캐시</string>-->
+<!--        <string name="KRW-SOL">솔라나</string>-->
+<!--        <string name="KRW-MATIC">폴리곤</string>-->
+<!--        <string name="KRW-AAVE">에이브</string>-->
+<!--        <string name="KRW-1INCH">1인치네트워크</string>-->
+<!--        <string name="KRW-FLOW">플로우</string>-->
+<!--        <string name="KRW-AXS">엑시인피니티</string>-->
+<!--        <string name="KRW-STX">스택스</string>-->
+<!--        <string name="KRW-NEAR">니어프로토콜</string>-->
+<!--        <string name="KRW-ALGO">알고랜드</string>-->
+<!--        <string name="KRW-T">쓰레스홀드</string>-->
+<!--        <string name="KRW-CELO">셀로</string>-->
+<!--        <string name="KRW-GMT">스테픈</string>-->
+<!--        <string name="KRW-APT">앱토스</string>-->
+<!--        <string name="KRW-SHIB">시바이누</string>-->
+<!--        <string name="KRW-MASK">마스크네트워크</string>-->
+<!--        <string name="KRW-ARB">아비트럼</string>-->
+<!--        <string name="KRW-EGLD">멀티버스엑스</string>-->
+<!--        <string name="KRW-SUI">수이</string>-->
+<!--        <string name="KRW-GRT">더그래프</string>-->
+<!--        <string name="KRW-BLUR">블러</string>-->
+<!--        <string name="KRW-IMX">이뮤터블엑스</string>-->
+<!--        <string name="KRW-SEI">세이</string>-->
+<!--        <string name="KRW-MINA">미나</string>-->
+<!--        <string name="KRW-CTC">크레딧코인</string>-->
+<!--        <string name="KRW-ASTR">아스타</string>-->
+<!--        <string name="KRW-ID">스페이스아이디</string>-->
+
+<!--    </string-array>-->
+
+</resources>
