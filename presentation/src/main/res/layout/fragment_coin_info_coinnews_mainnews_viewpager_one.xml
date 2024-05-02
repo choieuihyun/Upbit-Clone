@@ -29,6 +29,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="16dp"
                 android:text="@{String.valueOf(mainNewsViewModel.mainNewsTitle)}"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 tools:text="뉴스 제목이요" />
 
@@ -37,6 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{String.valueOf(mainNewsViewModel.mainNewsSummary)}"
+                android:textColor="@color/white"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
@@ -51,6 +53,7 @@
                 android:id="@+id/subNewsTitleOne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_margin="4dp"
                 tools:text="뉴스 내용 요약이요" />
 
@@ -58,6 +61,7 @@
                 android:id="@+id/subNewsTitleTwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_margin="4dp"
                 tools:text="뉴스 내용 요약이요" />
 

@@ -61,6 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:textColor="@color/white"
                     android:text="@string/highestIncreaseCoin" />
 
                 <LinearLayout
@@ -73,6 +74,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/white"
                         android:gravity="center"
                         android:text="@string/one_week" />
 
@@ -80,6 +82,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/white"
                         android:gravity="center"
                         android:text="@string/one_month" />
 
@@ -87,6 +90,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/white"
                         android:gravity="center"
                         android:text="@string/three_month" />
 
@@ -94,6 +98,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/white"
                         android:gravity="center"
                         android:text="@string/sixth_month" />
 
@@ -101,6 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/white"
                         android:gravity="center"
                         android:text="@string/one_year" />
 
@@ -125,6 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:textColor="@color/white"
                     android:text="@string/dailyTighteningStrengthRanking" />
 
                 <LinearLayout
@@ -139,6 +146,7 @@
                         android:layout_marginBottom="8dp"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:textColor="@color/white"
                         android:text="@string/buy" />
 
                     <TextView
@@ -146,6 +154,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
+                        android:textColor="@color/white"
                         android:gravity="center"
                         android:text="@string/sell" />
 
@@ -166,6 +175,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
+                        android:textColor="@color/white"
                         android:text="@string/ubciIndex" />
 
                     <LinearLayout
@@ -178,6 +188,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textColor="@color/white"
                             android:gravity="center"
                             android:text="@string/today" />
 
@@ -185,6 +196,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textColor="@color/white"
                             android:gravity="center"
                             android:text="@string/one_month" />
 
@@ -192,6 +204,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textColor="@color/white"
                             android:gravity="center"
                             android:text="@string/three_month" />
 
@@ -218,6 +231,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:textColor="@color/white"
                     android:text="@string/coinMarketCap" />
 
 
