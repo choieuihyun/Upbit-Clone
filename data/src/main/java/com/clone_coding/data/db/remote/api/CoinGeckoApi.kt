@@ -18,4 +18,6 @@ interface CoinGeckoApi {
         @Query("locale") locale: String
     ): Response<List<CoinAllDataResponse>> // Response에서 List를 만들거나 여기서 List로 반환하거나.
 
+
+
 }

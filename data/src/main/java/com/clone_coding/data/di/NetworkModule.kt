@@ -1,5 +1,6 @@
 package com.clone_coding.data.di
 
+import com.clone_coding.data.BuildConfig
 import com.clone_coding.data.db.remote.interactor.NetworkErrorHandlerImpl
 import com.clone_coding.domain.error.NetworkErrorHandler
 import dagger.Module
@@ -22,6 +23,7 @@ object NetworkModule {
     private const val UpbitAPI_BASE_URL = "https://api.upbit.com/v1/"
     private const val CoinGeckoAPI_BASE_URL = "https://api.coingecko.com/api/v3/"
     private const val UpbitAPI_WEBSOCKET_BASE_URL = "wss://api.upbit.com/websocket/v1"
+    private val secretKey = System.getenv("secret_key")
 
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
@@ -31,20 +33,61 @@ object NetworkModule {
     @Retention(AnnotationRetention.BINARY)
     annotation class CoinGeckoApiRetrofit
 
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class JwtTokenOkHttpClient
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class UpbitJwtTokenRetrofit
+
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(
+        webSocketClient: WebSocketClient,
+        interceptor: WebSocketInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(1, TimeUnit.DAYS)
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })
+            //.addNetworkInterceptor(interceptor) 뭐야 이게 필요도 없는데 에러 일으킴.
+            .build()
+    }
+
+    // 이거 jwtToken 부분 절대 커밋하지 말자.
+    @Singleton
+    @Provides
+    @JwtTokenOkHttpClient
+    fun provideJwtTokenOkHttpClient(): OkHttpClient {
+
+        return OkHttpClient.Builder()
+            .connectTimeout(1, TimeUnit.DAYS)
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            })
+            .addInterceptor(JwtInterceptor(BuildConfig.UPBIT_API_KEY, "n4q7DxIMi75JsKHp0oQ0jGILsCVxiAHSOwIMf5cD"))
             .build()
     }
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    @UpbitApiRetrofit
+    fun provideUpbitRetrofit(okHttpClient: OkHttpClient): Retrofit {
+
+        return Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .baseUrl(UpbitAPI_BASE_URL)
+            .build()
+
+    }
+
+    @Singleton
+    @Provides
+    @UpbitJwtTokenRetrofit
+    fun provideUpbitJwtRetrofit(@JwtTokenOkHttpClient okHttpClient: OkHttpClient): Retrofit {
 
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())

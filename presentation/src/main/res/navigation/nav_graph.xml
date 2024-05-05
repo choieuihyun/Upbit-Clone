@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/tradeCenterFragment"
         android:name="com.clone_coding.presentation.tradecenter.TradeCenterFragment"
-        android:label="TradeCenterFragment" />
+        android:label="TradeCenterFragment" >
+        <action
+            android:id="@+id/action_tradeCenterFragment_to_tradeCenterDetailFragment"
+            app:destination="@id/tradeCenterDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/coinInfoFragment"
         android:name="com.clone_coding.presentation.coininfo.CoinInfoFragment"
@@ -24,4 +28,14 @@
         android:id="@+id/investmentDetailFragment"
         android:name="com.clone_coding.presentation.investment.InvestmentDetailFragment"
         android:label="InvestmentDetailFragment" />
+    <fragment
+        android:id="@+id/tradeCenterDetailFragment"
+        android:name="com.clone_coding.presentation.tradecenter.detail_chart.TradeCenterDetailFragment"
+        android:label="TradeCenterDetailFragment" >
+        <argument
+            android:name="KRWTabModel"
+            app:argType="com.clone_coding.domain.model.TradeCenterKRWTabModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>

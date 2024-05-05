@@ -3,10 +3,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="navy">#0F0F3C</color>
+    <color name="navy">#E402061B</color>
+    <color name="light_navy">#E4091970</color>
 
 <!--    회색이긴 한데 거래소화면 탭 텍스트들 색이기도 함  -->
     <color name="gray">#DFDCDC</color>
+
+    <color name="red">#FF0000</color>
+    <color name="blue">#0000FF</color>
+    <color name="bottomNavigationColor">#28289F</color>
 
 
 </resources>
