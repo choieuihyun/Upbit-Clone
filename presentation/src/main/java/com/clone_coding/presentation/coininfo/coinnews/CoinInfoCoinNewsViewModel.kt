@@ -70,6 +70,8 @@ class CoinInfoCoinNewsViewModel @Inject constructor(
 
             repository.getLatestPolicyNews()
 
+            _latestNewsList.value = repository.policyNewsList
+
         }
 
     }
@@ -80,6 +82,8 @@ class CoinInfoCoinNewsViewModel @Inject constructor(
 
             repository.getLatestTechNews()
 
+            _latestNewsList.value = repository.techNewsList
+
         }
 
     }
@@ -89,6 +93,8 @@ class CoinInfoCoinNewsViewModel @Inject constructor(
         viewModelScope.launch {
 
             repository.getLatestColumnNews()
+
+            _latestNewsList.value = repository.columnNewsList
 
         }
 

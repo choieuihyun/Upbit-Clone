@@ -26,9 +26,6 @@ class CoinInfoCoinNewsFragment: BaseFragment<FragmentCoinInfoTabCoinnewsBinding>
         savedInstanceState: Bundle?
     ): View? {
 
-        viewModel.getMainNews()
-        viewModel.getLatestCoinNews()
-
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -36,8 +33,9 @@ class CoinInfoCoinNewsFragment: BaseFragment<FragmentCoinInfoTabCoinnewsBinding>
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getMainNews()
+        viewModel.getLatestCoinNews()
 
-        setupRecyclerView()
+        setupLatestNewsRecyclerView()
 
         val viewPagerAdapter = CoinInfoCoinNewsMainNewsViewPagerAdapter(this)
         binding.mainNewsViewPager.adapter = viewPagerAdapter
@@ -48,11 +46,53 @@ class CoinInfoCoinNewsFragment: BaseFragment<FragmentCoinInfoTabCoinnewsBinding>
 
         }
 
+        binding.coinText.setOnClickListener {
+
+            changeLatestNewsRecyclerView {
+
+                viewModel.getLatestCoinNews()
+
+            }
+
+        }
+
+        binding.techText.setOnClickListener {
+
+            changeLatestNewsRecyclerView {
+
+                viewModel.getLatestTechNews()
+
+            }
+
+        }
+
+        binding.policyText.setOnClickListener {
+
+            changeLatestNewsRecyclerView {
+
+                viewModel.getLatestPolicyNews()
+
+            }
+
+        }
+
+        binding.columnText.setOnClickListener {
+
+            changeLatestNewsRecyclerView {
+
+                viewModel.getLatestColumnNews()
+
+            }
+
+        }
+
+
+
 
 
     }
 
-    private fun setupRecyclerView() {
+    private fun setupLatestNewsRecyclerView() {
 
         latestNewsAdapter = CoinInfoCoinNewsLatestNewsAdapter()
 
@@ -63,6 +103,16 @@ class CoinInfoCoinNewsFragment: BaseFragment<FragmentCoinInfoTabCoinnewsBinding>
             adapter = latestNewsAdapter
         }
 
+
+    }
+
+    private fun changeLatestNewsRecyclerView(getNewsFunction: () -> Unit) {
+
+        getNewsFunction()
+
+        viewModel.latestNewsList.observe(viewLifecycleOwner) {
+            latestNewsAdapter.submitList(it)
+        }
 
     }
 
