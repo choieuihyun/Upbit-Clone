@@ -42,6 +42,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="최신 뉴스"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/white"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -50,36 +58,44 @@
 
                     <!-- 블록미디어 코인니스 속보 -->
                     <TextView
+                        android:id="@+id/coinText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="@drawable/coin_news_latest_news_tab_border"
                         android:textColor="@color/white"
                         android:gravity="center"
                         android:text="@string/coin" />
 
                     <!-- 블록미디어 policy -->
                     <TextView
+                        android:id="@+id/policyText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="@drawable/coin_news_latest_news_tab_border"
                         android:textColor="@color/white"
                         android:gravity="center"
                         android:text="@string/policy" />
 
                     <!-- 블록미디어 테크 -->
                     <TextView
+                        android:id="@+id/techText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="@drawable/coin_news_latest_news_tab_border"
                         android:textColor="@color/white"
                         android:gravity="center"
                         android:text="@string/tech" />
 
                     <!-- 블록미디어 opinion -->
                     <TextView
+                        android:id="@+id/columnText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="@drawable/coin_news_latest_news_tab_border"
                         android:textColor="@color/white"
                         android:gravity="center"
                         android:text="@string/column" />
