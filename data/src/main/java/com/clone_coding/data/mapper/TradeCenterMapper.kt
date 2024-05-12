@@ -1,23 +1,16 @@
 package com.clone_coding.data.mapper
 
-import com.clone_coding.data.db.remote.response.TradeCenterKRWTabInitializePriceResponse
-import com.clone_coding.data.db.remote.response.TradeCenterKRWTabMarketListResponse
-import com.clone_coding.data.db.remote.response.UpbitMarketInformationResponse
-import com.clone_coding.data.db.remote.response.UpbitMarketInformationResponseList
-import com.clone_coding.domain.error.NetworkResult
-import com.clone_coding.domain.model.TestModel
+import com.clone_coding.data.db.remote.response.upbit_api_response.TradeCenterKRWTabInitializePriceResponse
+import com.clone_coding.data.db.remote.response.upbit_api_response.TradeCenterKRWTabMarketListResponse
+import com.clone_coding.data.db.remote.response.upbit_api_response.UpbitMarketInformationResponse
+import com.clone_coding.data.db.remote.response.upbit_api_response.UpbitMarketInformationResponseList
 import com.clone_coding.domain.model.TradeCenterKRWTabInitializePriceModel
-import com.clone_coding.domain.model.TradeCenterKRWTabMarketListModel
+import com.clone_coding.domain.model.TradeCenterKRWTabModel
 import com.clone_coding.domain.model.UpbitMarketInformationModel
 import com.clone_coding.domain.model.UpbitMarketInformationModelList
 import java.math.BigDecimal
 import java.math.RoundingMode
 
-fun TradeCenterKRWTabMarketListResponse.toModel() = TradeCenterKRWTabMarketListModel(
-
-    tradeCenterMarketList = tradeCenterMarketList?.map { it.toModel() }
-
-)
 
 fun UpbitMarketInformationResponseList.toModel() = UpbitMarketInformationModelList(
 
@@ -40,7 +33,7 @@ fun TradeCenterKRWTabInitializePriceResponse.toModel() = TradeCenterKRWTabInitia
     accTradePrice24h = accTradePrice24h
 )
 
-fun TradeCenterKRWTabInitializePriceModel.toTestModel() = TestModel(
+fun TradeCenterKRWTabInitializePriceModel.toTestModel() = TradeCenterKRWTabModel(
 
     code = market,
     tradePrice = BigDecimal(tradePrice).setScale(1, RoundingMode.DOWN).toPlainString(),
@@ -50,13 +43,3 @@ fun TradeCenterKRWTabInitializePriceModel.toTestModel() = TestModel(
 )
 
 
-fun <T> NetworkResult<T>.toNetworkResult() : T =
-    (this as NetworkResult.Success).data
-
-private fun <R> changeNetworkData(replaceData: R) : NetworkResult<R> {
-    return NetworkResult.Success(replaceData)
-}
-
-suspend fun <T, R> NetworkResult<T>.mapNetworkResult(getData: suspend (T) -> R): NetworkResult<R> {
-    return changeNetworkData(getData(toNetworkResult()))
-}

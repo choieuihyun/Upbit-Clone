@@ -29,7 +29,9 @@ class CoinInfoFragment : BaseFragment<FragmentCoinInfoBinding>(R.layout.fragment
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when(position) {
-                0 -> tab.text = "코인동향"
+                0 -> {
+                    tab.text = "코인동향"
+                }
                 1 -> tab.text = "코인뉴스"
             }
         }.attach()

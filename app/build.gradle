@@ -9,7 +9,9 @@ plugins {
 
 android {
     namespace 'com.clone_coding.app'
+
 }
+
 
 apply from: rootProject.file("android.gradle")
 
@@ -19,7 +21,7 @@ dependencies {
     implementation project(path: ':data')
     implementation project(path: ':domain')
 
-    def hilt_version = "2.43.2"
+    def hilt_version = "2.44"
 
     implementation 'com.google.android.material:material:1.7.0'
 
@@ -27,4 +29,8 @@ dependencies {
     implementation("com.google.dagger:hilt-android:$hilt_version")
     kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
 
+}
+
+kapt {
+    correctErrorTypes = true
 }

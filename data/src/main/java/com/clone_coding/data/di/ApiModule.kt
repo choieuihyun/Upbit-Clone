@@ -2,6 +2,7 @@ package com.clone_coding.data.di
 
 import com.clone_coding.data.db.remote.api.CoinGeckoApi
 import com.clone_coding.data.db.remote.api.UpbitApi
+import com.clone_coding.data.db.remote.api.UpbitJwtApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,9 +23,17 @@ object ApiModule {
 
     @Singleton
     @Provides
+    fun upbitJwtApi(@NetworkModule.UpbitJwtTokenRetrofit retrofit: Retrofit): UpbitJwtApi {
+        return retrofit.create(UpbitJwtApi::class.java)
+    }
+
+    @Singleton
+    @Provides
     fun coinGeckoApi(@NetworkModule.CoinGeckoApiRetrofit retrofit: Retrofit): CoinGeckoApi {
         return retrofit.create(CoinGeckoApi::class.java)
     }
+
+
 
 
 }

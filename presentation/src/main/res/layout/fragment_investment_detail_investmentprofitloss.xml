@@ -5,6 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/navy"
         android:orientation="vertical">
 
         <LinearLayout
@@ -20,12 +21,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="@string/simpleProfitLossPercentage" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
+                    android:textColor="@color/white"
                     android:text="2024년 1월" />
 
             </LinearLayout>
@@ -39,6 +42,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="2024년 01월 01일 ~ 01월 18일의 투자손익" />
 
             </LinearLayout>
@@ -52,11 +56,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="@string/dateCumulativeProfitLoss" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="- 438,800 KRW" />
 
             </LinearLayout>
@@ -76,11 +82,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:text="@string/dateCumulativeProfitLossPercentage" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:text="-7.5 %" />
 
                 </LinearLayout>
@@ -94,11 +102,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:text="기간 평균 투자 금액" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:text="6,000,000 KRW" />
 
                 </LinearLayout>
@@ -115,6 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/test_icon"
+                    android:textColor="@color/white"
                     android:text="@string/investmentProfitLossGraph" />
 
                 <LinearLayout
@@ -128,6 +139,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:textColor="@color/white"
                         android:text="@string/cumulativeProfitLossPercentage" />
 
                     <TextView
@@ -135,6 +147,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:textColor="@color/white"
                         android:text="@string/profitLoss" />
 
                 </LinearLayout>
@@ -151,6 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
+                    android:textColor="@color/white"
                     android:text="@string/investmentProfitLossDetail" />
 
                 <LinearLayout
@@ -164,6 +178,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:padding="8dp"
+                        android:textColor="@color/white"
                         android:text="@string/date" />
 
                     <LinearLayout
@@ -181,6 +196,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:textColor="@color/white"
                                 android:text="@string/dailyProfitLoss" />
 
                             <TextView
@@ -188,6 +204,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:textColor="@color/white"
                                 android:text="@string/dailyProfitLossPercentage" />
 
                             <TextView
@@ -195,6 +212,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:textColor="@color/white"
                                 android:text="@string/closingBalance" />
 
                             <TextView
@@ -202,6 +220,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:textColor="@color/white"
                                 android:text="@string/deposit" />
 
                         </LinearLayout>
@@ -216,6 +235,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:textColor="@color/white"
                                 android:text="@string/cumulativeProfitLoss" />
 
                             <TextView
@@ -223,6 +243,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:textColor="@color/white"
                                 android:text="@string/cumulativeProfitLossPercentage" />
 
                             <TextView
@@ -230,6 +251,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:textColor="@color/white"
                                 android:text="@string/initialBalance" />
 
                             <TextView
@@ -237,6 +259,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:textColor="@color/white"
                                 android:text="@string/withdrawal" />
 
                         </LinearLayout>

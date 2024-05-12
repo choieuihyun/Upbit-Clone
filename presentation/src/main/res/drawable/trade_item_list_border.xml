@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-  
-</selector>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    &lt;!&ndash; Background &ndash;&gt;-->
+<!--    <item>-->
+<!--        <shape>-->
+<!--            <solid android:color="@color/navy"/> &lt;!&ndash; Transparent background &ndash;&gt;-->
+<!--        </shape>-->
+<!--    </item>-->
+
+<!--    &lt;!&ndash; Border on top &ndash;&gt;-->
+<!--    <item android:top="2dp">-->
+<!--        <shape>-->
+<!--            <stroke-->
+<!--                android:width="2dp" android:color="#CCCCCC"/>-->
+<!--        </shape>-->
+<!--    </item>-->
+</layer-list>

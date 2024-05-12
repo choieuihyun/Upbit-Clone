@@ -17,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class InvestmentDetailAssetholdViewModel @Inject constructor(
     private val repository: CoinInvestmentAssetHoldRepository
-): ViewModel() {
+) : ViewModel() {
 
     private val _assetHoldList = MutableLiveData<List<CoinInvestmentAssetHoldModel?>?>()
     val assetHoldList: LiveData<List<CoinInvestmentAssetHoldModel?>?>
@@ -65,7 +65,7 @@ class InvestmentDetailAssetholdViewModel @Inject constructor(
 
         viewModelScope.launch {
 
-            when(val assetHold = repository.getInvestmentAssetHold()) {
+            when (val assetHold = repository.getInvestmentAssetHold()) {
                 is NetworkResult.Success -> {
 
                     _assetHoldList.value = assetHold.data
@@ -78,42 +78,61 @@ class InvestmentDetailAssetholdViewModel @Inject constructor(
                     var holdAsset = 0
 
                     // 여기서 indices!!를 사용해도 되는건가? 보유자산 없으면 null이잖아.
-                    for(index in assetHoldList.value?.indices!!) {
+                    for (index in assetHoldList.value?.indices!!) {
 
                         Log.d("investmentViewModel2", assetHoldList.value!![index].toString())
 
-                        if(assetHoldList.value!![index]?.currency == "KRW") {
+                        if (assetHoldList.value!![index]?.currency == "KRW") {
 
                             // 보유 KRW
-                            holdKRW += assetHoldList.value!![index]?.balance?.toDouble() ?: 0.0 // KRW는 화폐니까 그 양만큼?
+                            holdKRW += assetHoldList.value!![index]?.balance?.toDouble()
+                                ?: 0.0 // KRW는 화폐니까 그 양만큼?
 
                         }
 
 
                         totalPurchase += assetHoldList.value!![index]?.totalPurchase?.toInt() ?: 0
-                        totalEvaluation += assetHoldList.value!![index]?.totalEvaluation?.toInt() ?: 0
+                        totalEvaluation += assetHoldList.value!![index]?.totalEvaluation?.toInt()
+                            ?: 0
                         evaluationProfitLoss += assetHoldList.value!![index]?.evaluationProfitLoss?.toInt()
                             ?: 0
 
+                        Log.d("AssetHoldTotalPur", totalPurchase.toString())
+                        Log.d("AssetHoldTotalEva", totalEvaluation.toString())
+                        Log.d("AssetHoldEvaProfit", evaluationProfitLoss.toString())
+
                     }
                     holdAsset = totalPurchase + evaluationProfitLoss + holdKRW.toInt()
-                    profitLossPercentage =
-                        BigDecimal((evaluationProfitLoss.toDouble() / totalPurchase.toDouble()) * 100)
-                            .setScale(2, RoundingMode.DOWN)
-                            .toDouble()
 
-                    _totalPurchase.value = totalPurchase.toString()
-                    _totalEvaluation.value = totalEvaluation.toString()
-                    _evaluationProfitLoss.value = evaluationProfitLoss
-                    _profitLossPercentage.value = profitLossPercentage
+                    try {
+                        // 일단 에러발생해서.
+                        profitLossPercentage =
+                            BigDecimal((evaluationProfitLoss.toDouble() / totalPurchase.toDouble()) * 100)
+                                .setScale(2, RoundingMode.DOWN)
+                                .toDouble()
 
-                    _holdAsset.value = holdAsset
-                    _holdKRW.value = holdKRW.toInt()
+                        _totalPurchase.value = totalPurchase.toString()
+                        _totalEvaluation.value = totalEvaluation.toString()
+                        _evaluationProfitLoss.value = evaluationProfitLoss
+                        _profitLossPercentage.value = profitLossPercentage
+
+                        _holdAsset.value = holdAsset
+                        _holdKRW.value = holdKRW.toInt()
+
+                    } catch (e : NumberFormatException) {
+
+                        _holdAsset.value = 0
+                        _holdKRW.value = 0
+                        _totalPurchase.value = "0"
+                        _totalEvaluation.value = "0"
+                        _evaluationProfitLoss.value = 0
+                        _profitLossPercentage.value = 0.0
+
+                    }
 
 
-                    Log.d("investmentViewModel", assetHold.data.toString())
-                    Log.d("investmentViewModelTotalPurchase", profitLossPercentage.toString())
                 }
+
                 is NetworkResult.Error -> {
                     Log.e("assetHoldNetworkError", assetHold.errorType.toString())
                 }

@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.07" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/searchEditText"
@@ -47,18 +47,19 @@
             app:layout_constraintVertical_bias="0.5" />
 
         <!-- 두 개의 흰색, 회색 라인은 각 위아래의 가이드 라인을 기준으로 비율을 설정하였음. -->
+
         <View
             android:id="@+id/searchEditTextWhiteline"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/itemTabGrayLine"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleGuideline"
-            app:layout_constraintVertical_bias="0.33" />
+            app:layout_constraintVertical_bias="0.06" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/possessionButton"
@@ -190,14 +191,14 @@
             app:layout_constraintGuide_percent="0.25" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            tools:listitem="@layout/fragment_trade_list_item"
-            android:layout_marginBottom="56dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/itemTabGrayLine" />
+            app:layout_constraintTop_toTopOf="@id/itemTabGrayLine"
+            tools:listitem="@layout/fragment_trade_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

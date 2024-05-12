@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="tradeListTestModel"
+            type="com.clone_coding.domain.model.CoinInvestmentTradeHistoryInnerTestModel" />
+
+    </data>
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/navy"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/market"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="@{tradeListTestModel.market}"
+            tools:text="KRW" />
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="@{tradeListTestModel.type}"
+            tools:text="매수" />
+
+        <TextView
+            android:id="@+id/tradeQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="@{tradeListTestModel.tradeQuantity}"
+            tools:text="818.289178283 TRX" />
+
+        <TextView
+            android:id="@+id/tradePrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="@{tradeListTestModel.tradePrice}"
+            tools:text="186.1 KRW" />
+
+        <TextView
+            android:id="@+id/tradeAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="@{tradeListTestModel.tradeAmount}"
+            tools:text="152,409 KRW" />
+
+        <TextView
+            android:id="@+id/charge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="@{tradeListTestModel.charge}"
+            tools:text="76.49 KRW" />
+
+        <TextView
+            android:id="@+id/settlementAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="@{tradeListTestModel.settlementAmount}"
+            tools:text="153,000" />
+
+        <TextView
+            android:id="@+id/orderTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="@{tradeListTestModel.orderTime}"
+            tools:text="24.02.18 11:09" />
+
+
+    </LinearLayout>
+
+</layout>

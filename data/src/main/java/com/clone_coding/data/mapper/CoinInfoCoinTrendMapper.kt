@@ -4,6 +4,7 @@ import com.clone_coding.data.db.remote.response.coingecko_api_response.CoinAllDa
 import com.clone_coding.data.db.remote.response.upbit_api_response.CoinInfoCoinTrendHighestIncreaseRateResponse
 import com.clone_coding.domain.model.MarketCapListModel
 import com.clone_coding.domain.model.CoinInfoCoinTrendHighestIncreaseRateModel
+import com.clone_coding.domain.model.CoinWithdrawCoinListModel
 
 fun CoinInfoCoinTrendHighestIncreaseRateResponse.toModel() = CoinInfoCoinTrendHighestIncreaseRateModel(
 
@@ -18,6 +19,7 @@ fun CoinInfoCoinTrendHighestIncreaseRateResponse.toModel() = CoinInfoCoinTrendHi
 fun CoinAllDataResponse.toModel() = MarketCapListModel(
 
     symbol = symbol,
+    currentPrice = currentPrice.toString(),
     name = name,
     imageUrl = image,
     marketCap = (marketCap / 100000000).toInt(),

@@ -7,9 +7,9 @@ plugins {
 }
 
 
-    android {
-        namespace 'com.clone_coding.data'
-    }
+android {
+    namespace 'com.clone_coding.data'
+}
 
 
 apply from: rootProject.file("android.gradle")
@@ -22,6 +22,7 @@ dependencies {
     def retrofit_version = "2.9.0"
     def okhttp_version = "4.9.1"
     def mockWebserver_version = "4.10.0"
+    def jsoup_version = "1.13.1"
 
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -52,5 +53,16 @@ dependencies {
     // Ktx
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
+    // Jsoup
+    implementation ("org.jsoup:jsoup:$jsoup_version")
 
+    // JWT
+    implementation 'com.auth0:java-jwt:3.18.2'
+    implementation 'com.google.android.gms:play-services-fido:20.1.0'
+
+
+}
+
+kapt {
+    correctErrorTypes = true
 }

@@ -38,9 +38,10 @@ class CoinInvestmentAssetHoldRepositoryImpl @Inject constructor(
                 // 그래서 여기서 if문으로 한번 거르는것. + mapNotNull과 함께 사용해야함.
                 // mapNotNull 함수는 람다 내에서 null을 반환하면 해당 요소는 결과에서 제외됨.
                 if (currentPrice != "null") {
-                    Log.d("investmentImpl", currentPrice)
+                    Log.d("investmentImpl1", currentPrice)
                     asset.toModel(currentPrice)
                 } else {
+                    Log.d("investmentImpl2", "null")
                     null
                 }
 
