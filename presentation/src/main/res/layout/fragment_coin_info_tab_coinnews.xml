@@ -21,7 +21,7 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/mainNewsViewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="220dp" />
 
             </LinearLayout>
 
@@ -33,7 +33,8 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/bannerViewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"/>
+                    android:layout_height="50dp"
+                    android:background="@drawable/no_image"/>
 
             </LinearLayout>
 
