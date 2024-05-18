@@ -7,8 +7,8 @@ import com.clone_coding.data.mapper.mapNetworkResult
 import com.clone_coding.data.mapper.toModel
 import com.clone_coding.data.mapper.toNetworkResult
 import com.clone_coding.data.mapper.toTestModel
+import com.clone_coding.domain.error.NetworkError
 import com.clone_coding.domain.error.NetworkResult
-import com.clone_coding.domain.model.TradeCenterKRWTabInitializePriceModel
 import com.clone_coding.domain.model.TradeCenterKRWTabModel
 import com.clone_coding.domain.repository.UpbitTradeCenterRepository
 import javax.inject.Inject
@@ -55,13 +55,33 @@ class UpbitTradeCenterRepositoryImpl @Inject constructor(
 
         val a = datasource.getTradeCenterCurrentPrice()
 
+        return when (a) {
+            is NetworkResult.Success -> {
+                val b = a.data?.map { it.toModel().toTestModel() }
+                NetworkResult.Success(b)
+            }
+            is NetworkResult.Error -> {
+                // 네트워크 호출에서 에러가 발생한 경우 여기서 적절히 처리
+                Log.d("sdfsdfErrorImpl", a.toString())
+                a // 그대로 반환
+            }
+            else -> {
+                // 예상치 못한 NetworkResult 타입인 경우
+                Log.d("sdfsdfErrorImpl2", a.toString())
+                NetworkResult.Error(NetworkError.Unknown)
+            }
+        }
+
+/*        val a = datasource.getTradeCenterCurrentPrice()
+        Log.d("sdfsdfErrorImpl", a.toString())
         val b = a.mapNetworkResult { list ->
+
             list?.map {
                 it.toModel().toTestModel()
             }
         }
 
-        return b
+        return b*/
 
 
     }
