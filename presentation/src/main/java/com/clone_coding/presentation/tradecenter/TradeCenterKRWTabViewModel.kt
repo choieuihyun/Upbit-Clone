@@ -17,6 +17,14 @@ class TradeCenterKRWTabViewModel @Inject constructor(
     private val repository: UpbitTradeCenterRepository
 ) : ViewModel() {
 
+    // 데이터 분류 타입
+    // 이와 같은 경우는 객체 내부의 데이터를 통한 분류가 이루어져야했기 때문에 그걸 나누는 것이 어려워 사용.
+    enum class SortType {
+        AMOUNT, // 거래대금
+        COMPARE_PREVIOUS_DAY, // 전일대비
+        CURRENT_PRICE // 현재가
+    }
+
     // 현재가(Ticker) 데이터
 
     // 마켓 코드 (ex. KRW-BTC)
@@ -42,7 +50,15 @@ class TradeCenterKRWTabViewModel @Inject constructor(
     // krwTab 전체 데이터
     private val _marketData = MutableLiveData<List<TradeCenterKRWTabModel>>()
     val marketData: LiveData<List<TradeCenterKRWTabModel>>
-        get() =  _marketData
+        get() = _marketData
+
+    var transactionAmountState = false // 거래대금 클릭 상태
+
+    var comparePreviousDayState = false // 전일대비 클릭 상태
+
+    var currentPriceState = false // 현재가 클릭 상태
+
+    var currentSortType = SortType.AMOUNT // 초기 데이터는 거래대금 내림차순
 
     fun getTradeCenterRealTimeInfo() {
 
@@ -51,7 +67,9 @@ class TradeCenterKRWTabViewModel @Inject constructor(
             repository.getTradeCenterRealTimeInfo()
 
             when (val result = repository.getTradeCenterCurrentPrice()) {
+
                 is NetworkResult.Success -> {
+
                     val marketDataList = result.data
 
                     val initializeMarketData =
@@ -68,6 +86,7 @@ class TradeCenterKRWTabViewModel @Inject constructor(
                                 )
                             )
                         }
+
                         _marketData.value = initializeMarketData.sortedByDescending {
                             it.accTradePrice24H?.toDoubleOrNull() ?: 0.0
                         }
@@ -75,6 +94,7 @@ class TradeCenterKRWTabViewModel @Inject constructor(
                     }
                 }
 
+                // 해당하는 로딩 화면 만들어야함.
                 is NetworkResult.Error -> Log.d("viewModelMessage2", "error")
             }
 
@@ -109,12 +129,70 @@ class TradeCenterKRWTabViewModel @Inject constructor(
                     )
                 }
 
-                _marketData.value = updatedMarketData.sortedByDescending {
-                    it.accTradePrice24H?.toDoubleOrNull() ?: 0.0
-                }
+                updateMarketDataState(updatedMarketData, currentSortType, getCurrentSortState())
+
             }
         }
     }
+
+    private fun updateMarketDataState(
+        list: List<TradeCenterKRWTabModel>,
+        sortType: SortType,
+        state: Boolean
+    ) {
+
+        _marketData.value = when (sortType) {
+
+            // 거래량
+            SortType.AMOUNT -> {
+                if (!state)
+                    list.sortedByDescending { it.accTradePrice24H?.toDoubleOrNull() ?: 0.0 }
+                else
+                    list.sortedBy { it.accTradePrice24H?.toDoubleOrNull() ?: 0.0 }
+            }
+            // 전일 대비
+            SortType.COMPARE_PREVIOUS_DAY -> {
+                if (!state)
+                    list.sortedByDescending { it.signedChangeRate?.toDoubleOrNull() ?: 0.0 }
+                else
+                    list.sortedBy { it.signedChangeRate?.toDoubleOrNull() ?: 0.0 }
+            }
+
+            // 현재가
+            SortType.CURRENT_PRICE -> {
+                if (!state)
+                    list.sortedByDescending { it.tradePrice?.toDoubleOrNull() ?: 0.0 }
+                else
+                    list.sortedBy { it.tradePrice?.toDoubleOrNull() ?: 0.0 }
+
+            }
+
+//        _marketData.value = list.sortedByDescending {
+//
+//            it.accTradePrice24H?.toDoubleOrNull() ?: 0.0
+//
+//        }
+
+        }
+    }
+
+    private fun getCurrentSortState(): Boolean {
+
+        return when (currentSortType) {
+            SortType.AMOUNT -> transactionAmountState
+            SortType.COMPARE_PREVIOUS_DAY -> comparePreviousDayState
+            SortType.CURRENT_PRICE -> currentPriceState
+        }
+
+    }
+
+    fun setSortType(sortType: SortType) {
+
+        currentSortType = sortType
+        updateMarketDataState(_marketData.value ?: emptyList(), sortType, getCurrentSortState())
+
+    }
+
 
 }
 
