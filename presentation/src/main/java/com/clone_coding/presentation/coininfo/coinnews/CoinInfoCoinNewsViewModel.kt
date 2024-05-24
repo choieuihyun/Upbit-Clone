@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CoinInfoCoinNewsViewModel @Inject constructor(
     private val repository: CoinInfoCoinNewsRepository
-): ViewModel() {
+) : ViewModel() {
 
     // 메인 뉴스에 들어갈 애들은 이 LiveData들을 바인딩하는게 맞다고 생각함.
     private val _mainNewsTitle = MutableLiveData<String>()
@@ -25,9 +25,18 @@ class CoinInfoCoinNewsViewModel @Inject constructor(
     val mainNewsSummary: LiveData<String>
         get() = _mainNewsSummary
 
-    private val _subNewsTitleMap = MutableLiveData<Map<String, String>>()
-    val subNewsTitleMap: LiveData<Map<String, String>>
-        get() = _subNewsTitleMap
+    // 이렇게 map으로 받는 것 보단
+    // private val _subNewsTitleMap = MutableLiveData<Map<String, String>>()
+    // val subNewsTitleMap: LiveData<Map<String, String>>
+    //   get() = _subNewsTitleMap
+
+    private val _subNewsTitleFirst = MutableLiveData<String>()
+    val subNewsTitleFirst: LiveData<String>
+        get() = _subNewsTitleFirst
+
+    private val _subNewsTitleSecond = MutableLiveData<String>()
+    val subNewsTitleSecond: LiveData<String>
+        get() = _subNewsTitleSecond
 
     // 코인 뉴스 크롤링 데이터
     private var _latestNewsList = MutableLiveData<MutableList<CoinInfoCoinNewsLatestNewsModel>>()
@@ -42,11 +51,13 @@ class CoinInfoCoinNewsViewModel @Inject constructor(
 
             _mainNewsTitle.value = repository.mainNewsTitle
             _mainNewsSummary.value = repository.mainNewsSummary
-            _subNewsTitleMap.value = repository.subNewsMap
+            //_subNewsTitleMap.value = repository.subNewsMap
+            _subNewsTitleFirst.value = repository.subNewsMap.entries.firstOrNull()?.key
+            _subNewsTitleSecond.value = repository.subNewsMap.entries.elementAtOrNull(1)?.key
 
             Log.d("coinNewsViewModel1", mainNewsTitle.value.toString())
             Log.d("coinNewsViewModel2", mainNewsSummary.value.toString())
-            Log.d("coinNewsViewModel3", subNewsTitleMap.value.toString())
+            // Log.d("coinNewsViewModel3", subNewsTitleMap.value.toString())
 
         }
 

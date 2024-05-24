@@ -8,15 +8,15 @@ import com.clone_coding.presentation.coininfo.cointrend.CoinInfoCoinTrendFragmen
 class CoinInfoCoinNewsMainNewsViewPagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int {
-        return 3
+        return 1
     }
 
     override fun createFragment(position: Int): Fragment {
 
         return when (position) {
-            0 -> return MainNewsViewPagerItemOne()
-            1 -> return MainNewsViewPagerItemTwo()
-            2 -> return MainNewsViewPagerItemThree()
+            0 -> MainNewsViewPagerItemOne()
+            1 -> MainNewsViewPagerItemTwo()
+            2 -> MainNewsViewPagerItemThree()
             else -> CoinInfoCoinNewsFragment()
         }
     }
