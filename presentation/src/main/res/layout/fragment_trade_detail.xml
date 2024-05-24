@@ -10,11 +10,12 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="코인이름"
-            android:textSize="24sp"
             android:textColor="@color/white"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/tabLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,14 +32,28 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/navy"
             android:layout_alignParentTop="true"
-            app:layout_constraintBottom_toTopOf="@+id/tabLayoutWhiteLine"
+            android:background="@color/light_navy"
+            app:layout_constraintBottom_toTopOf="@+id/periodLayout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/titleGuideline"
+            app:layout_constraintVertical_bias="0.0"
             app:tabGravity="fill"
             app:tabMode="fixed" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/periodLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/navy"
+            app:layout_constraintBottom_toTopOf="@+id/tabLayoutWhiteLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
@@ -60,7 +75,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleGuideline"
-            app:layout_constraintVertical_bias="0.06" />
+            app:layout_constraintVertical_bias="0.15" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
