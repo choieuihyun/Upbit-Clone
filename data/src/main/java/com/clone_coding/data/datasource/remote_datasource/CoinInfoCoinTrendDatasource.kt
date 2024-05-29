@@ -40,7 +40,7 @@ class CoinInfoCoinTrendDatasource @Inject constructor(
         "KRW-SC", "KRW-ONT", "KRW-ZIL", "KRW-POLYX", "KRW-ZRX", "KRW-LOOM", "KRW-BCH",
         "KRW-HIFI", "KRW-ONG", "KRW-GAS", "KRW-UPP", "KRW-ELF", "KRW-KNC", "KRW-THETA",
         "KRW-QKC", "KRW-BTT", "KRW-MOC", "KRW-TFUEL", "KRW-MANA", "KRW-ANKR", "KRW-AERGO",
-        "KRW-ATOM", "KRW-TT", "KRW-CRE", "KRW-MBL", "KRW-WAXP", "KRW-HBAR", "KRW-MED",
+        "KRW-ATOM", "KRW-TT", "KRW-GAME2", "KRW-MBL", "KRW-WAXP", "KRW-HBAR", "KRW-MED",
         "KRW-STPT", "KRW-ORBS", "KRW-CHZ", "KRW-XTZ", "KRW-HIVE", "KRW-KAVA", "KRW-AHT",
         "KRW-LINK", "KRW-BORA", "KRW-JST", "KRW-CRO", "KRW-SXP", "KRW-HUNT", "KRW-TON",
         "KRW-PDA", "KRW-DOT", "KRW-MVL", "KRW-AQT", "KRW-STRAX", "KRW-GLM",
@@ -51,7 +51,7 @@ class CoinInfoCoinTrendDatasource @Inject constructor(
         "KRW-SEI", "KRW-MINA", "KRW-CTC", "KRW-ASTR", "KRW-ID"
     )
 
-    // 이것도 동적으로..
+    // 이것도 동적으로.. , 캐리프로토콜 -> GAME2로 변경됐는데 영문명이 뭐냐..?
     private val krwMarketCoinNameList = listOf(
         "bitcoin", "ethereum", "neo", "metal", "ripple", "ethereum-classic", "status",
         "waves", "nem", "qtum", "lisk", "steem", "stellar", "ardor", "ark", "storj",
@@ -69,7 +69,7 @@ class CoinInfoCoinTrendDatasource @Inject constructor(
         "algorand", "tomochain", "celo", "global-markets-token", "alpha-platform", "shiba-inu",
         "mask-network", "arbitrum", "elrond", "swissborg", "the-graph", "blur-network",
         "immutable-x", "seigniorage-shares", "mina-protocol", "culture-ticket-chain", "astral-protocol",
-        "everest", "pundix"
+        "everest", "pundi-x"
     )
 
     val code: LiveData<String>
@@ -104,21 +104,45 @@ class CoinInfoCoinTrendDatasource @Inject constructor(
         val chunkedKrwMarketList = krwMarketList.chunked(krwMarketList.size / 10)
 
         val responseList = mutableListOf<List<CoinInfoCoinTrendHighestIncreaseRateResponse>?>()
+        val responseListByMonth = mutableListOf<List<CoinInfoCoinTrendHighestIncreaseRateResponse>?>()
 
         coroutineScope {
 
+            // 여기서 상승률을 계산 안하고 있는거 아니냐 지금?
             chunkedKrwMarketList.forEach { chunk ->
 
                 val response = chunk.map { market ->
+
                     async {
 
                         delay(1000)
-                        upbitApi.getCoinInfoTrendHighestIncreaseRateWeek(market, 1) // count를 1로 하고 해당 데이터 내에서 계산 가능하잖아.
+
+                        upbitApi.getCoinInfoTrendHighestIncreaseRateWeek(market, "", 1) // count를 1로 하고 해당 데이터 내에서 계산 가능하잖아. , 1)
 
                     }
                 }.awaitAll()
 
+//                val responseByMonth = chunk.map { market ->
+//
+//                    async {
+//
+//                        delay(1000)
+//
+//                        upbitApi.getCoinInfoTrendHighestIncreaseRateMonth(market, "",1)
+//
+//                    }
+//
+//                }.awaitAll()
+
+
+                Log.d("상승률 상위 코인", response.map {
+                    it.body()
+                }.toString())
+//                Log.d("월 별 상승률 상위 코인", responseByMonth.map {
+//                    it.body()
+//                }.toString())
                 responseList.addAll(response.map { it.body() })
+//                responseListByMonth.addAll(responseByMonth.map {it.body()})
 
             }
 
