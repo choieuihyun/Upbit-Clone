@@ -4,12 +4,15 @@ import com.clone_coding.data.db.remote.api.UpbitApi
 import com.clone_coding.data.db.remote.response.upbit_api_response.TradeCenterDetailChartResponse
 import com.clone_coding.domain.error.NetworkErrorHandler
 import com.clone_coding.domain.error.NetworkResult
+import com.clone_coding.domain.model.TradeCenterDetailChartModel
+import retrofit2.Response
 import javax.inject.Inject
 
 class UpbitTradeCenterDetailChartDatasource @Inject constructor(
     private val api: UpbitApi,
     private val networkErrorHandler: NetworkErrorHandler
 ) {
+    // CRE -> GAME2
     private val krwMarketList = listOf("KRW-BTC", "KRW-ETH", "KRW-NEO", "KRW-MTL", "KRW-XRP",
         "KRW-ETC", "KRW-SNT", "KRW-WAVES", "KRW-XEM", "KRW-QTUM", "KRW-LSK", "KRW-STEEM",
         "KRW-XLM", "KRW-ARDR", "KRW-ARK", "KRW-STORJ", "KRW-GRS",
@@ -17,7 +20,7 @@ class UpbitTradeCenterDetailChartDatasource @Inject constructor(
         "KRW-SC", "KRW-ONT", "KRW-ZIL", "KRW-POLYX", "KRW-ZRX", "KRW-LOOM", "KRW-BCH",
         "KRW-HIFI", "KRW-ONG", "KRW-GAS", "KRW-UPP", "KRW-ELF", "KRW-KNC", "KRW-THETA",
         "KRW-QKC", "KRW-BTT", "KRW-MOC", "KRW-TFUEL", "KRW-MANA", "KRW-ANKR", "KRW-AERGO",
-        "KRW-ATOM", "KRW-TT", "KRW-CRE", "KRW-MBL", "KRW-WAXP", "KRW-HBAR", "KRW-MED",
+        "KRW-ATOM", "KRW-TT", "KRW-GAME2", "KRW-MBL", "KRW-WAXP", "KRW-HBAR", "KRW-MED",
         "KRW-STPT", "KRW-ORBS", "KRW-CHZ", "KRW-XTZ", "KRW-HIVE", "KRW-KAVA", "KRW-AHT",
         "KRW-LINK", "KRW-BORA", "KRW-JST", "KRW-CRO", "KRW-SXP", "KRW-HUNT", "KRW-TON",
         "KRW-PLA", "KRW-DOT", "KRW-MVL", "KRW-AQT", "KRW-STRAX", "KRW-GLM",
@@ -55,5 +58,28 @@ class UpbitTradeCenterDetailChartDatasource @Inject constructor(
         }
 
     }
+
+    suspend fun getTradeCenterWeekChartInformation(
+        market: String,
+        to: String,
+        count: Int
+    ): NetworkResult<List<TradeCenterDetailChartResponse>?> {
+
+        return try {
+            val response = api.getTradeCenterDetailWeekChartInformation(
+                market,
+                to,
+                count
+            )
+
+            NetworkResult.Success(response.body())
+        } catch (e : Exception) {
+            val networkError = networkErrorHandler.errorMessage(e)
+            NetworkResult.Error(networkError)
+        }
+
+
+    }
+
 
 }
