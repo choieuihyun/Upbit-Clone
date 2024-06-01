@@ -1,10 +1,14 @@
 package com.clone_coding.presentation.tradecenter.detail_chart
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.clone_coding.domain.model.TradeCenterKRWTabModel
 import com.clone_coding.presentation.BaseFragment
@@ -56,6 +60,11 @@ class TradeCenterDetailChartFragment: BaseFragment<FragmentTradeDetailChartBindi
         }
 
         initChart()
+
+        val originalTextColor = binding.day.textColors
+
+        setupClickListener(originalTextColor)
+
 
         //setChartData(candles)
 
@@ -387,6 +396,175 @@ class TradeCenterDetailChartFragment: BaseFragment<FragmentTradeDetailChartBindi
                 ""
             }
         }
+    }
+
+    private fun setupClickListener(originalColor: ColorStateList) {
+
+        binding.minute.setOnClickListener {
+            onClickListener(it, originalColor)
+
+        }
+        binding.day.setOnClickListener {
+            onClickListener(it, originalColor)
+
+        }
+        binding.week.setOnClickListener {
+            onClickListener(it, originalColor)
+
+        }
+        binding.month.setOnClickListener {
+            onClickListener(it, originalColor)
+
+        }
+
+    }
+
+    private fun onClickListener(clickedText: View, originalColor: ColorStateList) {
+        val clickedId = clickedText.id
+
+        // 현재 클릭된 텍스트의 클릭 상태에 따라 처리
+        when (clickedId) {
+            binding.minute.id -> {
+                if (!binding.minute.isSelected) {
+
+                    // 현재 클릭된 텍스트의 클릭 상태 변경
+                    binding.minute.isSelected = true
+                    (clickedText as TextView).setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.blue
+                        )
+                    )
+
+                    // 메서드화 필요.
+                    setupBorder(clickedText, R.color.blue)
+
+                    // 이전에 선택된 텍스트의 클릭 상태 초기화
+                    binding.day.isSelected = false
+                    binding.day.setTextColor(originalColor)
+
+                    binding.week.isSelected = false
+                    binding.week.setTextColor(originalColor)
+
+                    binding.month.isSelected = false
+                    binding.month.setTextColor(originalColor)
+
+
+                } else {
+
+                    binding.minute.isSelected = false
+                    (clickedText as TextView).setTextColor(originalColor)
+                    setupBorder(clickedText, R.color.white)
+
+                }
+
+            }
+
+            binding.day.id -> {
+                if (!binding.day.isSelected) {
+
+                    binding.day.isSelected = true
+                    (clickedText as TextView).setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.blue
+                        )
+                    )
+
+                    setupBorder(clickedText, R.color.blue)
+
+                    // 이전에 선택된 텍스트의 클릭 상태 초기화
+                    binding.minute.isSelected = false
+                    binding.minute.setTextColor(originalColor)
+
+                    binding.week.isSelected = false
+                    binding.week.setTextColor(originalColor)
+
+                    binding.month.isSelected = false
+                    binding.month.setTextColor(originalColor)
+                } else {
+
+                    binding.day.isSelected = false
+                    (clickedText as TextView).setTextColor(originalColor)
+                    setupBorder(clickedText, R.color.white)
+
+                }
+
+            }
+
+            binding.week.id -> {
+                if (!binding.week.isSelected) {
+
+                    binding.week.isSelected = true
+                    (clickedText as TextView).setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.blue
+                        )
+                    )
+                    setupBorder(clickedText, R.color.blue)
+
+                    // 이전에 선택된 텍스트의 클릭 상태 초기화
+                    binding.minute.isSelected = false
+                    binding.minute.setTextColor(originalColor)
+
+                    binding.day.isSelected = false
+                    binding.day.setTextColor(originalColor)
+
+                    binding.month.isSelected = false
+                    binding.month.setTextColor(originalColor)
+                } else {
+
+                    binding.week.isSelected = false
+                    (clickedText as TextView).setTextColor(originalColor)
+                    setupBorder(clickedText, R.color.white)
+
+                }
+
+            }
+
+            binding.month.id -> {
+                if (!binding.month.isSelected) {
+
+                    binding.month.isSelected = true
+                    (clickedText as TextView).setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.blue
+                        )
+                    )
+                    setupBorder(clickedText, R.color.blue)
+
+                    // 이전에 선택된 텍스트의 클릭 상태 초기화
+                    binding.minute.isSelected = false
+                    binding.minute.setTextColor(originalColor)
+
+                    binding.day.isSelected = false
+                    binding.day.setTextColor(originalColor)
+
+                    binding.week.isSelected = false
+                    binding.week.setTextColor(originalColor)
+                } else {
+
+                    binding.month.isSelected = false
+                    (clickedText as TextView).setTextColor(originalColor)
+                    setupBorder(clickedText, R.color.white)
+
+                }
+
+
+            }
+        }
+    }
+
+    private fun setupBorder(clickedText: View, color: Int) {
+
+        var drawable = ContextCompat.getDrawable(requireContext(), R.drawable.trade_center_detail_timeunits_border)
+        if (drawable is GradientDrawable) {
+            drawable.setStroke(1, ContextCompat.getColor(requireContext(), color)) // 파란색으로 변경
+            clickedText.setBackgroundDrawable(drawable)
+        }
+
     }
 
 }
