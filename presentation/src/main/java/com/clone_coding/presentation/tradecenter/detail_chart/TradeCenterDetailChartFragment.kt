@@ -63,7 +63,24 @@ class TradeCenterDetailChartFragment: BaseFragment<FragmentTradeDetailChartBindi
 
         val originalTextColor = binding.day.textColors
 
-        setupClickListener(originalTextColor)
+
+        // 이걸 굳이 메서드화 시켜야하나? argument만 파라미터로 추가될 뿐인데.
+        binding.minute.setOnClickListener {
+            onClickListener(it, originalTextColor)
+            viewModel.setSortType(TradeCenterDetailViewModel.Period.MINUTE, args.code!!, "", 50)
+        }
+        binding.day.setOnClickListener {
+            onClickListener(it, originalTextColor)
+            viewModel.setSortType(TradeCenterDetailViewModel.Period.DAY, args.code!!, "", 50)
+        }
+        binding.week.setOnClickListener {
+            onClickListener(it, originalTextColor)
+            viewModel.setSortType(TradeCenterDetailViewModel.Period.WEEK, args.code!!, "", 30)
+        }
+        binding.month.setOnClickListener {
+            onClickListener(it, originalTextColor)
+            viewModel.setSortType(TradeCenterDetailViewModel.Period.MONTH, args.code!!, "", 15)
+        }
 
 
         //setChartData(candles)
@@ -398,26 +415,6 @@ class TradeCenterDetailChartFragment: BaseFragment<FragmentTradeDetailChartBindi
         }
     }
 
-    private fun setupClickListener(originalColor: ColorStateList) {
-
-        binding.minute.setOnClickListener {
-            onClickListener(it, originalColor)
-
-        }
-        binding.day.setOnClickListener {
-            onClickListener(it, originalColor)
-
-        }
-        binding.week.setOnClickListener {
-            onClickListener(it, originalColor)
-
-        }
-        binding.month.setOnClickListener {
-            onClickListener(it, originalColor)
-
-        }
-
-    }
 
     private fun onClickListener(clickedText: View, originalColor: ColorStateList) {
         val clickedId = clickedText.id
@@ -442,12 +439,15 @@ class TradeCenterDetailChartFragment: BaseFragment<FragmentTradeDetailChartBindi
                     // 이전에 선택된 텍스트의 클릭 상태 초기화
                     binding.day.isSelected = false
                     binding.day.setTextColor(originalColor)
+                    setupBorder(binding.day, R.color.white)
 
                     binding.week.isSelected = false
                     binding.week.setTextColor(originalColor)
+                    setupBorder(binding.week, R.color.white)
 
                     binding.month.isSelected = false
                     binding.month.setTextColor(originalColor)
+                    setupBorder(binding.month, R.color.white)
 
 
                 } else {
@@ -476,12 +476,15 @@ class TradeCenterDetailChartFragment: BaseFragment<FragmentTradeDetailChartBindi
                     // 이전에 선택된 텍스트의 클릭 상태 초기화
                     binding.minute.isSelected = false
                     binding.minute.setTextColor(originalColor)
+                    setupBorder(binding.minute, R.color.white)
 
                     binding.week.isSelected = false
                     binding.week.setTextColor(originalColor)
+                    setupBorder(binding.week, R.color.white)
 
                     binding.month.isSelected = false
                     binding.month.setTextColor(originalColor)
+                    setupBorder(binding.month, R.color.white)
                 } else {
 
                     binding.day.isSelected = false
@@ -507,12 +510,15 @@ class TradeCenterDetailChartFragment: BaseFragment<FragmentTradeDetailChartBindi
                     // 이전에 선택된 텍스트의 클릭 상태 초기화
                     binding.minute.isSelected = false
                     binding.minute.setTextColor(originalColor)
+                    setupBorder(binding.minute, R.color.white)
 
                     binding.day.isSelected = false
                     binding.day.setTextColor(originalColor)
+                    setupBorder(binding.day, R.color.white)
 
                     binding.month.isSelected = false
                     binding.month.setTextColor(originalColor)
+                    setupBorder(binding.month, R.color.white)
                 } else {
 
                     binding.week.isSelected = false
@@ -538,12 +544,15 @@ class TradeCenterDetailChartFragment: BaseFragment<FragmentTradeDetailChartBindi
                     // 이전에 선택된 텍스트의 클릭 상태 초기화
                     binding.minute.isSelected = false
                     binding.minute.setTextColor(originalColor)
+                    setupBorder(binding.minute, R.color.white)
 
                     binding.day.isSelected = false
                     binding.day.setTextColor(originalColor)
+                    setupBorder(binding.day, R.color.white)
 
                     binding.week.isSelected = false
                     binding.week.setTextColor(originalColor)
+                    setupBorder(binding.week, R.color.white)
                 } else {
 
                     binding.month.isSelected = false
