@@ -44,8 +44,6 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideOkHttpClient(
-        webSocketClient: WebSocketClient,
-        interceptor: WebSocketInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(1, TimeUnit.DAYS)
@@ -67,7 +65,7 @@ object NetworkModule {
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })
-            .addInterceptor(JwtInterceptor(BuildConfig.UPBIT_API_KEY, "n4q7DxIMi75JsKHp0oQ0jGILsCVxiAHSOwIMf5cD"))
+            .addInterceptor(JwtInterceptor(BuildConfig.UPBIT_API_KEY, ""))
             .build()
     }
 
@@ -122,12 +120,22 @@ object NetworkModule {
         return CoinInfoCoinTrendWebSocketListener()
     }
 
-    @Singleton
-    @Provides
-    fun provideWebSocketInterceptor(webSocketClient: WebSocketClient,
-                                    webSocketListener: TradeCenterWebSocketListener): WebSocketInterceptor {
-        return WebSocketInterceptor(webSocketClient, webSocketListener, UpbitAPI_WEBSOCKET_BASE_URL)
-    }
+//    @Singleton
+//    @Provides
+//    fun provideWebSocketInterceptor(webSocketClient: WebSocketClient,
+//                                    webSocketListener: TradeCenterWebSocketListener): WebSocketInterceptor {
+//        return WebSocketInterceptor(webSocketClient, webSocketListener, UpbitAPI_WEBSOCKET_BASE_URL)
+//    }
+
+//    @Singleton
+//    @Provides
+//    fun provideWebSocketManager(
+//        webSocketListener: TradeCenterWebSocketListener,
+//        webSocketUrl: String,
+//        webSocketClient: WebSocketClient
+//    ): WebSocketManager {
+//        return WebSocketManager(webSocketClient, webSocketListener, webSocketUrl)
+//    }
 
     @Singleton
     @Provides
